@@ -1,17 +1,22 @@
 import {Request, Response} from "express";
 import {EinstaklingarController} from "../controllers/EinstaklingarController";
 import {HeimilisfongController} from "../controllers/HeimilisfongController";
+//import {BornforeldrarController} from "../controllers/BornforeldrarController";
+
 
 
 class Routes {
 
     private einstaklingarController: EinstaklingarController;
     private heimilisfongController: HeimilisfongController;
+//    private bornforeldrarController: BornforeldrarController;
     
 
     constructor() {
         this.einstaklingarController = new EinstaklingarController();
         this.heimilisfongController = new HeimilisfongController();
+//        this.bornforeldrarController = new BornforeldrarController();
+        
         
     }
 
@@ -26,6 +31,8 @@ class Routes {
 
         app.route('/einstaklingar')
             .get(this.einstaklingarController.list);
+//        app.route('/bornforeldrar').get(this.bornforeldrarController.list);
+            
         app.route('/heimilisfong')
             .get(this.heimilisfongController.list);
 /*            .post(this.controller.addSuperHero);

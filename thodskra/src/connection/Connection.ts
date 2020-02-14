@@ -1,8 +1,7 @@
 import {createConnection} from "typeorm";
 import {Heimilisfong} from "../entity/Heimilisfong";
 import {Einstaklingar} from "../entity/Einstaklingar";
-import { EinstaklingarController } from "../controllers/EinstaklingarController";
-//import Power from "../entity/Power";
+import {Bornforeldrar} from "../entity/Bornforeldrar";
 
 export const connection = createConnection({
     type: "postgres",
