@@ -26,7 +26,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.einstaklingar (
     kennitala character varying(12) NOT NULL,
-    nafn text NOT NULL,
+	nafn character varying NOT NULL,
     faedingardagur timestamp with time zone,
     maki character varying(12)
 );
@@ -70,22 +70,22 @@ INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES 
 INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168603034250', 'Pascale B. Hull', NULL, '164105304911');
 INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('164208076325', 'Hermione W. Mcfarland', NULL, '164301171502');
 INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('167201175770', 'Lani O. Ward', NULL, '163611276795');
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('160108117573', 'Quyn G. Rice', '2019-03-29 19:00:58+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165402020142', 'Ila T. Mcclain', '2020-01-22 08:09:34+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161308073715', 'Cassandra N. Workman', '2019-11-30 15:27:38+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168203182756', 'Kennedy E. Albert', '2019-09-22 22:35:47+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168004283696', 'Aphrodite G. Weeks', '2019-10-19 21:06:03+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('163211239144', 'Zachery G. Francis', '2019-02-23 06:17:39+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161602291310', 'Laura V. Sharp', '2020-03-27 22:08:00+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('166112136814', 'Evelyn U. Pate', '2019-02-16 18:17:11+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('169810230921', 'Steven Q. Andrews', '2019-08-05 17:49:00+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165511272022', 'Yuli X. Schneider', '2020-09-16 09:19:12+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168510108098', 'Buffy J. Vazquez', '2020-05-20 08:19:44+00', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161710291053', 'Elvis S. Adams', '2019-09-12 22:46:55+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('164906305679', 'Brandon R. Tanner', '2019-12-29 09:19:12+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165502151722', 'Hasad P. Cherry', '2020-04-29 07:57:18+00', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161204126484', 'Tobias L. Mcleod', '2019-12-16 02:38:46+01', NULL);
-INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165104298004', 'Shea Y. Abbott', '2020-03-13 14:29:57+01', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('160108117573', 'Quyn G. Rice', '2019-03-29 19:00:58', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165402020142', 'Ila T. Mcclain', '2020-01-22 08:09:34', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161308073715', 'Cassandra N. Workman', '2019-11-30 15:27:38', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168203182756', 'Kennedy E. Albert', '2019-09-22 22:35:47', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168004283696', 'Aphrodite G. Weeks', '2019-10-19 21:06:03', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('163211239144', 'Zachery G. Francis', '2019-02-23 06:17:39', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161602291310', 'Laura V. Sharp', '2020-03-27 22:08:00', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('166112136814', 'Evelyn U. Pate', '2019-02-16 18:17:11', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('169810230921', 'Steven Q. Andrews', '2019-08-05 17:49:00', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165511272022', 'Yuli X. Schneider', '2020-09-16 09:19:12', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('168510108098', 'Buffy J. Vazquez', '2020-05-20 08:19:44', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161710291053', 'Elvis S. Adams', '2019-09-12 22:46:55', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('164906305679', 'Brandon R. Tanner', '2019-12-29 09:19:12', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165502151722', 'Hasad P. Cherry', '2020-04-29 07:57:18', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('161204126484', 'Tobias L. Mcleod', '2019-12-16 02:38:46', NULL);
+INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('165104298004', 'Shea Y. Abbott', '2020-03-13 14:29:57', NULL);
 INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('169411046932', 'Mr. missing', NULL, NULL);
 INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('160412199184', 'Mrs. Missing', NULL, NULL);
 INSERT INTO public.einstaklingar (kennitala, nafn, faedingardagur, maki) VALUES ('164403203237', 'Mr. Missing like crazy', NULL, NULL);

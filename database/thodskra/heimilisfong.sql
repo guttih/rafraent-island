@@ -26,7 +26,7 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.heimilisfong (
     id integer NOT NULL,
-    postfang text NOT NULL
+	postfang character varying COLLATE pg_catalog."default" NOT NULL
 );
 
 

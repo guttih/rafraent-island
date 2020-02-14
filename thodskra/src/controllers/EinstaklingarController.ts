@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
 import {connection} from "../connection/Connection";
-import {Heimilisfong} from "../entity/Heimilisfong";
+import {Einstaklingar} from "../entity/Einstaklingar";
 //import Power from "../entity/Power";
 
-class HeimilisfongController {
+class EinstaklingarController {
 
     constructor() {}
 
@@ -11,7 +11,7 @@ class HeimilisfongController {
     public list(req: Request, res: Response) {
         connection
             .then(async connection => {
-                const result: Heimilisfong[] = await connection.manager.find(Heimilisfong);
+                const result: Einstaklingar[] = await connection.manager.find(Einstaklingar);
                 res.json(result);
                 console.log("ok");
             })
@@ -113,4 +113,4 @@ class HeimilisfongController {
     }*/
 }
 
-export {HeimilisfongController}
+export {EinstaklingarController}

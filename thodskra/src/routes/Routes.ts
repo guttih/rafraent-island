@@ -1,12 +1,18 @@
 import {Request, Response} from "express";
+import {EinstaklingarController} from "../controllers/EinstaklingarController";
 import {HeimilisfongController} from "../controllers/HeimilisfongController";
+
 
 class Routes {
 
+    private einstaklingarController: EinstaklingarController;
     private heimilisfongController: HeimilisfongController;
+    
 
     constructor() {
+        this.einstaklingarController = new EinstaklingarController();
         this.heimilisfongController = new HeimilisfongController();
+        
     }
 
     public routes(app): void {
@@ -18,8 +24,10 @@ class Routes {
                     });
             });
 
+        app.route('/einstaklingar')
+            .get(this.einstaklingarController.list);
         app.route('/heimilisfong')
-            .get(this.heimilisfongController.getAll);
+            .get(this.heimilisfongController.list);
 /*            .post(this.controller.addSuperHero);
 
         app.route('/superHero/:superHeroId')
@@ -27,6 +35,7 @@ class Routes {
             .put(this.controller.updateSuperHero)
             .delete(this.controller.deleteSuperHero);
 */
+    
     }
     
 }

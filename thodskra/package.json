@@ -4,17 +4,17 @@
    "description": "Demo project fyrir þjóðskrá vegna verkefnis fyrir Rafrænt Ísland",
    "devDependencies": {
       "@types/node": "^8.10.59",
+      "nodemon": "^2.0.2",
       "ts-node": "^3.3.0",
       "typescript": "^3.3.3333"
    },
    "dependencies": {
       "express": "^4.17.1",
-      "nodemon": "^2.0.2",
       "pg": "^7.18.1",
       "reflect-metadata": "^0.1.13",
       "typeorm": "^0.2.22"
    },
    "scripts": {
-      "start": "ts-node src/index.ts"
+      "start": "nodemon src/index.ts"
    }
 }
