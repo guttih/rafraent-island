@@ -29,20 +29,23 @@ class Routes {
                     });
             });
 
+//        app.route('/bornforeldrar').get(this.bornforeldrarController.list);
         app.route('/einstaklingar')
             .get(this.einstaklingarController.list)
             .post(this.einstaklingarController.add);
-//        app.route('/bornforeldrar').get(this.bornforeldrarController.list);
+        app.route('/einstaklingar/:kennitala')
+            .get(this.einstaklingarController.getByKennitala)
+            .put(this.einstaklingarController.update)
+            .delete(this.einstaklingarController.delete);
             
         app.route('/heimilisfong')
             .get(this.heimilisfongController.list)
             .post(this.heimilisfongController.add);
-/*
-        app.route('/superHero/:superHeroId')
-            .get(this.controller.getSuperHeroById)
-            .put(this.controller.updateSuperHero)
-            .delete(this.controller.deleteSuperHero);
-*/
+        app.route('/heimilisfong/:id')
+            .get(this.heimilisfongController.getById)
+            .put(this.heimilisfongController.update)
+            .delete(this.heimilisfongController.delete);
+
     
     }
     

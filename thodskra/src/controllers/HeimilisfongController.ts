@@ -36,32 +36,16 @@ class HeimilisfongController {
                 res.json(error);
             });
     }
-/*
-    public updateSuperHero(req: Request, res: Response) {
+
+    public update(req: Request, res: Response) {
         connection
             .then(async connection => {
 
-                let superHero  = await connection.manager.findOne(SuperHero, req.params.superHeroId);
+                let item  = await connection.manager.findOne(Heimilisfong, req.params.id);
 
-                let requestSuperHero = req.body;
-                let requestPower = requestSuperHero.power;
-
-                superHero.name = requestSuperHero.name;
-                superHero.power = [];
-
-                // delete previous power of our super-hero
-                superHero.power.forEach(async power => {
-                    await connection.manager.remove(Power, {id: power.id});
-                });
-
-                // add new power to our super-hero
-                requestPower.forEach(requestPower => {
-                    let power: Power = new Power();
-                    power.ability = requestPower;
-                    superHero.power.push(power);
-                });
-
-                await connection.manager.save(superHero);
+                let requestItem = req.body;
+                item.postfang = requestItem.postfang;
+                await connection.manager.save(item);
                 res.json({message: "Successfully Updated."})
             })
             .catch(error => {
@@ -70,11 +54,11 @@ class HeimilisfongController {
             });
     }
 
-    public getSuperHeroById(req: Request, res: Response) {
+    public getById(req: Request, res: Response) {
         connection
             .then(async connection => {
-                let superHero  = await connection.manager.findOne(SuperHero, req.params.superHeroId);
-                res.json(superHero)
+                let item  = await connection.manager.findOne(Heimilisfong, req.params.id);
+                res.json(item);
             })
             .catch(error => {
                 console.error("Error ", error);
@@ -82,18 +66,13 @@ class HeimilisfongController {
             });
     }
 
-    public deleteSuperHero(req: Request, res: Response) {
+    public delete(req: Request, res: Response) {
         connection
             .then(async connection => {
-                let superHero  = await connection.manager.findOne(SuperHero, req.params.superHeroId);
+                let item  = await connection.manager.findOne(Heimilisfong, req.params.id);
 
-                // delete all power first
-                superHero.power.forEach(async power => {
-                    await connection.manager.remove(Power, {id: power.id});
-                });
-
-                // delete our super-hero
-                await connection.manager.remove(SuperHero, {id: req.params.superHeroId});
+                // todo: delete all from logheimili
+                await connection.manager.remove(item);
 
                 res.json({message: "Successfully Removed."})
             })
@@ -101,7 +80,7 @@ class HeimilisfongController {
                 console.error("Error ", error);
                 res.json(error);
             });
-    }*/
+    }
 }
 
 export {HeimilisfongController}
