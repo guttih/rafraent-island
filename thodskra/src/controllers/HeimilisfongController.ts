@@ -20,24 +20,15 @@ class HeimilisfongController {
                 res.json(error);
             });
     }
-/*
-    public addSuperHero(req: Request, res: Response) {
+
+    public add(req: Request, res: Response) {
         connection
             .then(async connection => {
-                let requestSuperHero = req.body;
-                let requestPower = requestSuperHero.power;
-
-                let superHero = new SuperHero();
-                superHero.name = requestSuperHero.name;
-                superHero.power = [];
-
-                requestPower.forEach(requestPower => {
-                   let power: Power = new Power();
-                   power.ability = requestPower;
-                   superHero.power.push(power);
-                });
-
-                await connection.manager.save(superHero);
+                let requestItem      = req.body;
+                let item = new Heimilisfong();
+                item.id      = requestItem.id;
+                item.postfang           = requestItem.postfang;
+                await connection.manager.save(item);
                 res.json({message: "Successfully Saved."})
             })
             .catch(error => {
@@ -45,7 +36,7 @@ class HeimilisfongController {
                 res.json(error);
             });
     }
-
+/*
     public updateSuperHero(req: Request, res: Response) {
         connection
             .then(async connection => {

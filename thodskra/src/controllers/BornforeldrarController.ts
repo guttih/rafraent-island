@@ -1,9 +1,9 @@
 import {Request, Response} from 'express';
 import {connection} from "../connection/Connection";
-import {Bornforeldrar} from "../entity/Bornforeldrar";
+import {Heimilisfong} from "../entity/Heimilisfong";
 
 //see https://typeorm.io/#/entities/column-types-for-postgres
-class BornforeldrarController {
+class HeimilisfongController {
 
     constructor() {}
 
@@ -11,7 +11,7 @@ class BornforeldrarController {
     public list(req: Request, res: Response) {
         connection
             .then(async connection => {
-                const result: Bornforeldrar[] = await connection.manager.find(Bornforeldrar);
+                const result: Heimilisfong[] = await connection.manager.find(Heimilisfong);
                 res.json(result);
                 console.log("ok");
             })
@@ -20,7 +20,6 @@ class BornforeldrarController {
                 res.json(error);
             });
     }
-    
 /*
     public addSuperHero(req: Request, res: Response) {
         connection
@@ -114,4 +113,4 @@ class BornforeldrarController {
     }*/
 }
 
-export {BornforeldrarController}
+export {HeimilisfongController}

@@ -20,24 +20,37 @@ class EinstaklingarController {
                 res.json(error);
             });
     }
-/*
-    public addSuperHero(req: Request, res: Response) {
+    public add(req: Request, res: Response) {
         connection
             .then(async connection => {
-                let requestSuperHero = req.body;
-                let requestPower = requestSuperHero.power;
-
-                let superHero = new SuperHero();
-                superHero.name = requestSuperHero.name;
-                superHero.power = [];
-
-                requestPower.forEach(requestPower => {
-                   let power: Power = new Power();
-                   power.ability = requestPower;
-                   superHero.power.push(power);
-                });
-
-                await connection.manager.save(superHero);
+                let requestItem      = req.body;
+                let requestForeldrar = requestItem.foreldrar;
+                let requestBorn      = requestItem.born;
+                //let requestPower = requestEinstaklingur.power;
+ 
+                let item = new Einstaklingar();
+                item.kennitala      = requestItem.kennitala;
+                item.nafn           = requestItem.nafn;
+                item.faedingardagur = requestItem.faedingardagur;
+                item.maki           = requestItem.maki;
+                /*item.born           = [];
+                item.foreldrar      = [];
+                if (requestForeldrar!== undefined){
+                    requestForeldrar.forEach(requestItem => {
+                        let subItem: Einstaklingar = new Einstaklingar();
+                        subItem.kennitala = requestItem.kennitala;
+                        item.foreldrar.push(subItem);
+                    });
+                }
+                if (requestBorn !== undefined ) {
+                    requestBorn.forEach(requestItem => {
+                        let subItem: Einstaklingar = new Einstaklingar();
+                        subItem.kennitala = requestItem.kennitala;
+                        item.born.push(subItem);
+                    });
+                }
+*/
+                await connection.manager.save(item);
                 res.json({message: "Successfully Saved."})
             })
             .catch(error => {
@@ -45,7 +58,7 @@ class EinstaklingarController {
                 res.json(error);
             });
     }
-
+/*
     public updateSuperHero(req: Request, res: Response) {
         connection
             .then(async connection => {

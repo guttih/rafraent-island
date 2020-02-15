@@ -30,13 +30,14 @@ class Routes {
             });
 
         app.route('/einstaklingar')
-            .get(this.einstaklingarController.list);
+            .get(this.einstaklingarController.list)
+            .post(this.einstaklingarController.add);
 //        app.route('/bornforeldrar').get(this.bornforeldrarController.list);
             
         app.route('/heimilisfong')
-            .get(this.heimilisfongController.list);
-/*            .post(this.controller.addSuperHero);
-
+            .get(this.heimilisfongController.list)
+            .post(this.heimilisfongController.add);
+/*
         app.route('/superHero/:superHeroId')
             .get(this.controller.getSuperHeroById)
             .put(this.controller.updateSuperHero)

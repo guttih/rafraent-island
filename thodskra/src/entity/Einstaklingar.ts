@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, UpdateDateColumn} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, JoinTable} from "typeorm";
 //see https://typeorm.io/#/entities/column-types-for-postgres
 @Entity()
 export class Einstaklingar {
@@ -14,4 +14,11 @@ export class Einstaklingar {
 
     @Column({nullable:true, length:12})
     maki: string; 
+/*
+    @ManyToMany(type => Einstaklingar, item => item.born)
+    @JoinTable()
+    foreldrar: Einstaklingar[];
+  
+    @ManyToMany(type => Einstaklingar, item => item.foreldrar)
+    born: Einstaklingar[];*/
 }
