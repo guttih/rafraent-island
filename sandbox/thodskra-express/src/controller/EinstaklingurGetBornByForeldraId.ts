@@ -9,14 +9,13 @@ export async function einstaklingurGetBornByForeldraId(request: Request, respons
 
     const repository = getManager().getRepository(Einstaklingur);
 
-    const item = await repository.findOne({where:{kennitala: request.params.kennitala},relations: ["born", "logheimili"]});
-    if (!item) {
+    const items = await repository.find({where:{kennitala: request.params.kennitala},relations: ["foreldri", "logheimili"]});
+    if (!items) {
         response.status(404).json({"message":"Not found!"});
         response.end();
         return;
     } 
 
-    let born = item.born === undefined? [] : item.born;
     // return loaded item
-    response.send(born);
+    response.send(items);
 }

@@ -14,17 +14,17 @@ export class Einstaklingur extends BaseEntity {
     faedingardagur: Date;
 
     @Column({nullable:true, length:12})
-    maki: string; 
+    maki_kennitala: string; 
 
-    @OneToOne(type => Einstaklingur, einst => einst.maki, { cascade: true })
-    makiItem: Einstaklingur;
+    @OneToOne(type => Einstaklingur, einst => einst.maki_kennitala, { cascade: true })
+    maki: Einstaklingur;
     
     @ManyToMany(type => Einstaklingur, { cascade: true })
-    @JoinTable()
+    @JoinTable({ name:"foreldri_barn", joinColumn:{name:"foreldri_kennitala"}, inverseJoinColumn:{name:"barn_kennitala"} })
     born: Einstaklingur[];
 
     @ManyToMany(type => Heimilisfang, { cascade: true })
-    @JoinTable()
+    @JoinTable({ name:"einstaklingur_heimilisfang", joinColumn:{name:"kennitala"}, inverseJoinColumn:{name:"heimilisfang_id"} })
     logheimili: Heimilisfang[];
 
 }
