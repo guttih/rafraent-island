@@ -1,5 +1,5 @@
 const {Pool, Client} = require('pg');
-const connectionString = 'postgressql://postgres:password@localhost:5432/postgres';
+const connectionString = 'postgressql://postgres:postgres@localhost:5432/typegraphql';
 
 const client = new Client({
     connectionString:connectionString

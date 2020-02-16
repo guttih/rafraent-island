@@ -1,0 +1,28 @@
+{
+  "name": "gql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "node build/index.js",
+    "prestart": "npm run build",
+    "build": "tsc",
+    "debug": "ts-node-dev --respawn src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/federation": "^0.12.1",
+    "apollo-server-express": "^2.10.1",
+    "express": "^4.17.1",
+    "graphql-depth-limit": "^1.1.0",
+    "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "@types/graphql-depth-limit": "^1.1.2",
+    "@types/request": "^2.48.4",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "typescript": "^3.7.5"
+  }
+}
