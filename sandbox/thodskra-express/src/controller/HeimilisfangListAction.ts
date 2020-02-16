@@ -7,6 +7,7 @@ import {Heimilisfang} from "../entity/Heimilisfang";
  */
 export async function heimilisfangListAction(request: Request, response: Response) {
 
+    
     const repository = getManager().getRepository(Heimilisfang);
 
     const items = await repository.find();
