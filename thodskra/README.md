@@ -9,8 +9,7 @@ Steps to run this project:
    -  http://localhost:3000/heimilisfong to list heimilisfong
    -  http://localhost:3000/einstaklingar to list einstaklingar
 
-based on [example](https://github.com/prameshbhattarai/express-js-type-orm-postgres)
 
 
-## develop
-read this https://typeorm.io/#/
+
+

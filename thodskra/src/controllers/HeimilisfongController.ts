@@ -7,7 +7,7 @@ class HeimilisfongController {
 
     constructor() {}
 
-
+    // see EntityManager:  https://github.com/typeorm/typeorm/blob/master/docs/entity-manager-api.md
     public list(req: Request, res: Response) {
         connection
             .then(async connection => {

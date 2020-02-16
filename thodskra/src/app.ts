@@ -18,6 +18,7 @@ class App {
 
         this.routePrv = new Routes();
         this.routePrv.routes(this.app);
+        
 
     }
 

@@ -27,6 +27,7 @@ class Routes {
                     .send({
                         message: "GET request successfully."
                     });
+                    console.log('Root OK')
             });
 
 //        app.route('/bornforeldrar').get(this.bornforeldrarController.list);
@@ -37,6 +38,8 @@ class Routes {
             .get(this.einstaklingarController.getByKennitala)
             .put(this.einstaklingarController.update)
             .delete(this.einstaklingarController.delete);
+        app.route('/einstaklingar/born/:kennitala')
+            .get(this.einstaklingarController.getByBornKennitala);
             
         app.route('/heimilisfong')
             .get(this.heimilisfongController.list)
@@ -45,8 +48,6 @@ class Routes {
             .get(this.heimilisfongController.getById)
             .put(this.heimilisfongController.update)
             .delete(this.heimilisfongController.delete);
-
-    
     }
     
 }

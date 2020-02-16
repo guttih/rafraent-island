@@ -1,7 +1,10 @@
-import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, ManyToMany, JoinTable} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column, PrimaryColumn, JoinTable, OneToMany, BaseEntity} from "typeorm";
+//import { Bornforeldrar } from "./Bornforeldrar";
+import { Z_FILTERED } from "zlib";
+import { EinstaklingarController } from "../controllers/EinstaklingarController";
 //see https://typeorm.io/#/entities/column-types-for-postgres
 @Entity()
-export class Einstaklingar {
+export class Einstaklingar extends BaseEntity{
 
     @PrimaryColumn({length:12})
     kennitala: string;
@@ -14,11 +17,20 @@ export class Einstaklingar {
 
     @Column({nullable:true, length:12})
     maki: string; 
-/*
-    @ManyToMany(type => Einstaklingar, item => item.born)
-    @JoinTable()
+
+    @OneToMany(() => Einstaklingar, e => e.foreldrar)
+    born: Einstaklingar[];
+
+    @OneToMany(() => Einstaklingar, e => e.born)
+    foreldrar: Einstaklingar[];
+    
+    /*@OneToMany(() => Bornforeldrar, bf => bf.barnItem)
     foreldrar: Einstaklingar[];
   
-    @ManyToMany(type => Einstaklingar, item => item.foreldrar)
+    @OneToMany(() => Bornforeldrar, bf => bf.foreldriItem)
     born: Einstaklingar[];*/
+
+    
+
+    
 }

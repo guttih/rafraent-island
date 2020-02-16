@@ -12,7 +12,8 @@ export const connection = createConnection({
     database: "postgres",
     entities: [
         Heimilisfong,
-        Einstaklingar
+        Einstaklingar,
+        Bornforeldrar
     ],
     synchronize: true,
 logging: false

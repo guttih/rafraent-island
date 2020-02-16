@@ -1,13 +1,22 @@
-import {Entity, Column, PrimaryColumn, OneToMany, TreeParent} from "typeorm";
+
+import {Entity, Column, PrimaryColumn, ManyToMany, ManyToOne, JoinColumn, BaseEntity} from "typeorm";
 import {Einstaklingar} from "../entity/Einstaklingar"
 
 //see https://typeorm.io/#/entities/column-types-for-postgres
 @Entity()
-export class Bornforeldrar {
+export class Bornforeldrar extends BaseEntity {
 
-    @PrimaryColumn({nullable:false, length:12})
+    @PrimaryColumn()
     barn: string;
 
-    @OneToMany(type => Einstaklingar, parent => parent.kennitala)
-    parent: Einstaklingar;
+    @PrimaryColumn()
+    foreldri: string
+
+    @ManyToOne(() => Einstaklingar, einstaklingar => einstaklingar.foreldrar)
+    @JoinColumn({name: "barn"})
+    barnItem: Einstaklingar;
+
+    @ManyToOne(() => Einstaklingar, einstaklingar => einstaklingar.born)
+    @JoinColumn({name: "foreldri"})
+    foreldriItem: Einstaklingar;
 }
