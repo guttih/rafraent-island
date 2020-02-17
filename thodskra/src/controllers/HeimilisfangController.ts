@@ -7,7 +7,7 @@ import { connection } from "../connection/Connection";
 /**
  * Loads all posts from the database.
  */
-export const getHeimilisfong = async (request: Request, response: Response) => {
+export const HeimilisfongGet = async (request: Request, response: Response) => {
     await connection;
     const repository = getManager().getRepository(Heimilisfang);
 
@@ -17,7 +17,7 @@ export const getHeimilisfong = async (request: Request, response: Response) => {
         
 };
 
-export async function getHeimilisfangById(request: Request, response: Response) {
+export const HeimilisfangGetById = async(request: Request, response: Response) => {
 
     try {
         await connection
@@ -38,7 +38,7 @@ export async function getHeimilisfangById(request: Request, response: Response) 
     }; 
 };
 
-export async function getHeimilisfangByKennitala(request: Request, response: Response) {
+export const HeimilisfangGetByKennitala = async (request: Request, response: Response) => {
 
     console.log('einstaklingurGetBornByKennitala');
     try {
@@ -54,7 +54,7 @@ export async function getHeimilisfangByKennitala(request: Request, response: Res
     }; 
 };
 
-export async function saveHeimilisfang(request: Request, response: Response) {
+export const HeimilisfangSave = async (request: Request, response: Response) => {
 
     try{
         await connection
@@ -64,13 +64,37 @@ export async function saveHeimilisfang(request: Request, response: Response) {
         console.log("newItem");console.log(newItem);
 
         await repository.save(newItem).catch(error => {
-            console.error("Error ", error);
-            response.status(422).json(error);
+            errorReport(response, error, 422);
         });
 
         response.send(newItem);
     } catch(error){
         await errorReport(response, error);
+    }; 
+}
+
+export const HeimilisfangDeleteById = async (request: Request, response: Response) => {
+
+    try {
+        await connection
+        const repository = getManager().getRepository(Heimilisfang);
+        const item = await repository.findOne(request.params.id);
+
+        if (!item) {
+            response.status(404).json({message:"Id not found!"});;
+            return;
+        }
+
+        await repository.remove(item);
+
+        // return loaded item
+        response.json({
+            message: "Item deleted item",
+            item   : item
+        });
+
+    } catch(error){
+        errorReport(response, error);
     }; 
 }
 
