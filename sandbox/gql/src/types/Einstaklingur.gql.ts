@@ -6,6 +6,7 @@ export default gql`
     nafn: String!
     faedingardagur: String
     maki_kennitala: String
+    maki: Einstaklingur
   }
 
   extend type Query {
