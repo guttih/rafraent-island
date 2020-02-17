@@ -1,7 +1,6 @@
 import {createConnection} from "typeorm";
-import {Heimilisfong} from "../entity/Heimilisfong";
-import {Einstaklingar} from "../entity/Einstaklingar";
-import {Bornforeldrar} from "../entity/Bornforeldrar";
+import {Heimilisfang} from "../entity/Heimilisfang";
+import {Einstaklingur} from "../entity/Einstaklingur";
 
 export const connection = createConnection({
     type: "postgres",
@@ -11,9 +10,8 @@ export const connection = createConnection({
     password: "password",
     database: "postgres",
     entities: [
-        Heimilisfong,
-        Einstaklingar,
-        Bornforeldrar
+        Heimilisfang,
+        Einstaklingur
     ],
     synchronize: true,
 logging: false
