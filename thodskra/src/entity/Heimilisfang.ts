@@ -1,12 +1,12 @@
 import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
 
 @Entity()
-export class Category {
+export class Heimilisfang {
 
     @PrimaryGeneratedColumn()
     id: number;
 
     @Column()
-    name: string;
+    postfang: string;
 
 }

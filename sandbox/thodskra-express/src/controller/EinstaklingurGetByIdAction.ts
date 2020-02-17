@@ -16,14 +16,14 @@ export async function einstaklingurGetByIdAction(request: Request, response: Res
         response.end();
         return;
     } else {
-        if (item.maki){
-            const felagi = await repository.findOne({where:{kennitala: item.maki},relations: ["born", "logheimili"]});
+        if (item.maki_kennitala){
+            const felagi = await repository.findOne({where:{kennitala: item.maki_kennitala},relations: ["born", "logheimili"]});
             if (felagi) {
-                item.makiItem = felagi;
+                item.maki = felagi;
             }
         }
     }
-
+    console.log(item);
     // return loaded item
     response.send(item);
 }

@@ -7,16 +7,28 @@ import {Einstaklingur} from "../entity/Einstaklingur";
  */
 export async function einstaklingurGetBornByForeldraId(request: Request, response: Response) {
 
-    const repository = getManager().getRepository(Einstaklingur);
+    /*const repository = getManager().getRepository(Einstaklingur);
 
-    const item = await repository.findOne({where:{kennitala: request.params.kennitala},relations: ["born", "logheimili"]});
-    if (!item) {
+    const items = await repository.find({where:{kennitala: request.params.kennitala},relations: ["foreldri", "logheimili"]});
+    if (!items) {
         response.status(404).json({"message":"Not found!"});
         response.end();
         return;
     } 
 
-    let born = item.born === undefined? [] : item.born;
     // return loaded item
-    response.send(born);
+    response.send(items);*/
+
+    try {
+        const items = await getManager().query( ' SELECT e.kennitala, e.nafn, e.faedingardagur, e.maki_kennitala'
+                                               +' FROM foreldri_barn fb'
+                                               +' LEFT JOIN einstaklingur e ON e.kennitala = fb.barn_kennitala' 
+                                               +' WHERE foreldri_kennitala = $1',
+                                                [request.params.kennitala]);
+        response.json(items);
+        return;
+    } catch(error){
+        console.error("Error ", error);
+        response.status(500).json({message:"There was an error!"});
+    }; 
 }
