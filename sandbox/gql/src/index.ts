@@ -28,6 +28,14 @@ app.get("/books", (req: any, res: any) => {
   res.send(mocks.books);
 });
 
+app.get("/einstaklingar", (req: any, res: any) => {
+  res.send();
+});
+
+app.get(`/einstaklingar/:kennitala`, (req: any, res: any) => {
+  res.send();
+});
+
 server.applyMiddleware({ app });
 
 app.listen({ port: 4000 }, () =>
