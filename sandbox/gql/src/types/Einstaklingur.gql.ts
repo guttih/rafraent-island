@@ -9,10 +9,11 @@ export default gql`
     maki: Einstaklingur
     born: [Einstaklingur]
     foreldrar: [Einstaklingur]
+    logheimili: [Heimilisfang]
   }
 
   extend type Query {
-    getEinstaklingar: [Einstaklingur],
+    getEinstaklingar(faeddurEftir: String = "1800-01-01"): [Einstaklingur],
     getEinstaklingur(kennitala: String): Einstaklingur,
     getBorn(kennitala: String): [Einstaklingur],
     getForeldrar(kennitala: String): [Einstaklingur]

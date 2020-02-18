@@ -18,7 +18,7 @@ export const getEinstaklingurByKennitalaFromService = async (kennitala: String):
         });
     });
     return einstaklingur;
-  }
+}
 
 export const getEinstaklingarFromService = async (): Promise<Einstaklingur[]> => {
     const einstaklingar = new Promise<Einstaklingur[]>((resolve, reject) => {

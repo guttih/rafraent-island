@@ -110,7 +110,7 @@ ALTER TABLE ONLY public.einstaklingur_heimilisfang
 --
 
 ALTER TABLE ONLY public.einstaklingur_heimilisfang
-    ADD CONSTRAINT einstaklingur_logheimili_heimilisfang_ideinstaklings_fkey FOREIGN KEY ("kennitala") REFERENCES public.einstaklingar(kennitala);
+    ADD CONSTRAINT einstaklingur_logheimili_heimilisfang_ideinstaklings_fkey FOREIGN KEY ("kennitala") REFERENCES public.einstaklingur(kennitala);
 
 
 --
@@ -118,7 +118,7 @@ ALTER TABLE ONLY public.einstaklingur_heimilisfang
 --
 
 ALTER TABLE ONLY public.einstaklingur_heimilisfang
-    ADD CONSTRAINT einstaklingur_logheimili_heimilisfang_idheimili_fkey FOREIGN KEY ("heimilisfang_id") REFERENCES public.heimilisfong(id);
+    ADD CONSTRAINT einstaklingur_logheimili_heimilisfang_idheimili_fkey FOREIGN KEY ("heimilisfang_id") REFERENCES public.heimilisfang(id);
 
 
 --

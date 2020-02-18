@@ -12,4 +12,24 @@
   }
 ```
 ## command 2
- 
+```
+{
+  getEinstaklingar(faeddurEftir: "2019-07-01") {
+    nafn
+    kennitala
+    logheimili {
+      postfang
+    }
+    faedingardagur
+    foreldrar {
+      nafn
+      kennitala
+      logheimili {
+        postfang
+      }
+      faedingardagur
+    }
+  }
+}
+
+```
