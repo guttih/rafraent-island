@@ -1,6 +1,10 @@
 import {Einstaklingur} from "./../interfaces/Einstaklingur";
+import {Heimilisfang} from "./../interfaces/Heimilisfang";
 import * as einstaklingurDAO from "../DataFetch/einstaklingurDAO";
+import * as heimilisfangDAO from "../DataFetch/heimilisfangDAO";
+import {GraphQLDateTime} from "graphql-iso-date";
 import Context from "../context";
+import e = require("express");
 
 export default {
     Query: {
@@ -8,7 +12,8 @@ export default {
             return einstaklingurDAO.getEinstaklingurByKennitalaFromService(args.kennitala);
         },
         getEinstaklingar: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
-            return einstaklingurDAO.getEinstaklingarFromService();
+            return (await einstaklingurDAO.getEinstaklingarFromService())
+                .filter(a => a.faedingardagur > args.faeddurEftir || args.faeddurEftir == "1800-01-01");
         },
         getBorn: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
             return einstaklingurDAO.getBornByKennitalaFromService(args.kennitala);
@@ -19,7 +24,7 @@ export default {
     },
     Einstaklingur: {
         maki: async (einstaklingur: Einstaklingur, args: any, context: Context, info: any): Promise<Einstaklingur | null> => {
-            if(einstaklingur.maki_kennitala !== undefined && einstaklingur.maki_kennitala !== null){
+            if(einstaklingur.maki_kennitala){
                 const maki = einstaklingurDAO.getEinstaklingurByKennitalaFromService(einstaklingur.maki_kennitala);
             return maki;
             }
@@ -32,7 +37,10 @@ export default {
         foreldrar: async (einstaklingur: Einstaklingur, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
             const foreldrar = einstaklingurDAO.getForeldrarByKennitalaFromService(einstaklingur.kennitala);
             return foreldrar;
+        },
+        logheimili: async (einstaklingur: Einstaklingur, args: any, context: Context, info: any): Promise<Heimilisfang[]> => {
+            const logheimili = heimilisfangDAO.getHeimilisfongByKennitalaFromService(einstaklingur.kennitala);
+            return logheimili;
         }
     }
-
 }

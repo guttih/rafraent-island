@@ -43,7 +43,7 @@ export const HeimilisfangGetByKennitala = async (request: Request, response: Res
     console.log('einstaklingurGetBornByKennitala');
     try {
         await connection;
-        const items = await getManager().query(` SELECT h.id, h.postfang eh FROM heimilisfang h
+        const items = await getManager().query(` SELECT h.id, h.postfang FROM heimilisfang h
                                                  JOIN einstaklingur_heimilisfang eh ON eh.heimilisfang_id = h.id
                                                  WHERE eh.kennitala = $1`,
                                                 [request.params.kennitala]);

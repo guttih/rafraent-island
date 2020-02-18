@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/federation": "^0.12.1",
+    "@types/graphql-iso-date": "^3.3.3",
     "apollo-server-express": "^2.10.1",
     "express": "^4.17.1",
     "graphql-depth-limit": "^1.1.0",
+    "graphql-iso-date": "^3.6.1",
     "request": "^2.88.2"
   },
   "devDependencies": {
