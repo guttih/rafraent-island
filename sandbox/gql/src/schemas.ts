@@ -4,7 +4,6 @@ import Book from "./types/Book.gql";
 import Einstaklingur from "./types/Einstaklingur.gql";
 import bookResolver from "./resolvers/bookResolver";
 import authorResolver from "./resolvers/authorResolver";
-import einstaklingarResolver from "./resolvers/einstaklingarResolver";
 import einstaklingurResolver from "./resolvers/einstaklingurResolver";
 
 export const schema = buildFederatedSchema([
