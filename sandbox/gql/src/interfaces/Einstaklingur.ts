@@ -3,4 +3,5 @@ export interface Einstaklingur {
     nafn: string;
     faedingardagur: String;
     maki_kennitala: string;
+    maki: Einstaklingur;
 }

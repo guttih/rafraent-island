@@ -6,11 +6,14 @@ import {
     einstaklingurGetBornByKennitala,
     einstaklingurGetByKennitalaDetailed,
     einstaklingurSave,
+    einstaklingurDeleteByKennitala,
     } from "../controllers/EinstaklingurController";
 import {
-    getHeimilisfong, 
-    getHeimilisfangByKennitala, 
-    getHeimilisfangById} from "../controllers/HeimilisfangController";
+    HeimilisfongGet, 
+    HeimilisfangGetByKennitala, 
+    HeimilisfangGetById,
+    HeimilisfangSave,
+    HeimilisfangDeleteById} from "../controllers/HeimilisfangController";
 import {MakePage} from "../libs/InfoPage"
 
 class Routes {
@@ -28,32 +31,27 @@ class Routes {
                     console.log('Root OK')
             });
 
-//        app.route('/bornforeldrar').get(this.bornforeldrarController.list);
         app.route('/einstaklingar')
             .get(einstaklingarGet)
             .post(einstaklingurSave);
         app.route('/einstaklingar/nanar/:kennitala')
             .get(einstaklingurGetByKennitalaDetailed);
         app.route('/einstaklingar/:kennitala')
-            .get(einstaklingurGetByKennitala);/*
-            .put(this.einstaklingarController.update)
-            .delete(this.einstaklingarController.delete);
-        app.route('/einstaklingar/born/:kennitala')
-            .get(this.einstaklingarController.getByBornKennitala);
-        */  
+            .get(einstaklingurGetByKennitala)
+            .delete(einstaklingurDeleteByKennitala);
        app.route('/einstaklingar/born/:kennitala')
             .get(einstaklingurGetBornByKennitala);
        app.route('/einstaklingar/foreldrar/:kennitala')
-            .get(einstaklingurGetForeldrarByKennitala);/*
+            .get(einstaklingurGetForeldrarByKennitala);
+
         app.route('/heimilisfong')
-            .get(getHeimilisfong);
-            /*.post(this.heimilisfongController.add);*/
+            .get(HeimilisfongGet)
+            .post(HeimilisfangSave);
         app.route('/heimilisfong/:id')
-            .get(getHeimilisfangById);
-            /*.put(this.heimilisfongController.update)
-            .delete(this.heimilisfongController.delete);*/
+            .get(HeimilisfangGetById)
+            .delete(HeimilisfangDeleteById);
         app.route('/heimilisfong/einstaklingur/:kennitala')
-            .get(getHeimilisfangByKennitala);
+            .get(HeimilisfangGetByKennitala);
             
     }
     

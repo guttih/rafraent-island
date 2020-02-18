@@ -19,7 +19,7 @@ const server = new ApolloServer({
   // tracing and debug not enable in production
   tracing: isDevelopment,
   debug: isDevelopment,
-  validationRules: [depthLimit(3)],
+  validationRules: [depthLimit(4)],
  });
 
 const app = express();

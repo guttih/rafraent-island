@@ -151,6 +151,32 @@ export const einstaklingurGetByKennitala = async(request: Request, response: Res
     }
 }
 
+export const einstaklingurDeleteByKennitala = async(request: Request, response: Response) => {
+    console.log('einstaklingurDeleteByKennitala');
+    
+    try{
+        await connection;
+        const repository = getManager().getRepository(Einstaklingur);
+        const item = await repository.findOne({where:{kennitala: request.params.kennitala}});
+
+        if (!item) {
+            response.status(404).json({message:"Kennitala not found!"});;
+            return;
+        }
+
+        await repository.remove(item);
+
+        // return loaded item
+        response.json({
+            message: "Item deleted item",
+            item   : item
+        });
+
+    } catch(error) {
+        errorReport(response, error);
+    }
+}
+
 export const einstaklingurGetForeldrarByKennitala = async(request: Request, response: Response) => {
     console.log('einstaklingurGetForeldrarByKennitala');
     
