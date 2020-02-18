@@ -1,0 +1,14 @@
+{
+  "name": "nodesoap",
+  "version": "1.0.0",
+  "description": "consumar soap þjónusty\u001b[D\u001b[u\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[Dnodejs app sem comsumar node þjónustu",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "soap": "^0.30.0"
+  }
+}
