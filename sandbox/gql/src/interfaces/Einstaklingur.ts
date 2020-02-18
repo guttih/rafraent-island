@@ -4,4 +4,6 @@ export interface Einstaklingur {
     faedingardagur: String;
     maki_kennitala: string;
     maki: Einstaklingur;
+    born: [Einstaklingur];
+    foreldrar: [Einstaklingur];
 }
