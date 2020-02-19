@@ -1,8 +1,10 @@
 
 
 const PageRoutes = [
-    {   path: "/aaetladurfaedingardagur",                          method: "get",      description: `Sækir alla áætlaða fæðingadaga barna`        },
-    {   path: "/aaetladurfaedingardagur/:kennitala",                method: "get",      description: `Sækir áætlaðann fæðimngardag barns út frá kennitölu foreldris`}
+    {   path: "/aaetladurfaedingardagur",            method: "get",      description: `Sækir alla áætlaða fæðingadaga barna`        },
+    {   path: "/aaetladurfaedingardagur/:kennitala", method: "get",      description: `Sækir áætlaðann fæðimngardag barns út frá kennitölu foreldris`},
+    {   path: "/faedingarorlofstekjur",              method: "get",      description: `Sækir tekjur einstaklinga vegna fæðingarorlofs`},
+    {   path: "/faedingarorlofstekjur/:kennitala",   method: "get",      description: `Sækir tekjur einstaklings vegna fæðingarorlofs út frá kenitölu hans`},
 ];
 
 export const MakePage = (title: String, description:String):String => {

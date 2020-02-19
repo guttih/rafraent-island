@@ -21,7 +21,25 @@ export const GetAaetladurFaedingardagurByKennitala = async (request, response) =
     soap.createClient(url, function(err, client) {
         var args = {kennitala: request.params.kennitala};
         client.GetAaetladurFaedingardagurByKennitala(args, function(err, result) {
-            response.send(result.GetAaetladurFaedingardagurByKennitalaResult);
+            response.send(result.AaetladurFaedingardagurByKennitalaResult);
+        });
+    });
+}
+
+export const GetFaedingarorlofstekjur = async (request, response) => {
+    soap.createClient(url, function(err, client) {
+        client.GetFaedingarorlofstekjur({}, function(err, result) {
+            response.send(result.GetFaedingarorlofstekjurResult.Faedingarorlofstekjur);
+        });
+    });
+}
+
+export const GetFaedingarorlofstekjurByKennitala = async (request, response) => {
+
+    soap.createClient(url, function(err, client) {
+        var args = {kennitala: request.params.kennitala};
+        client.GetFaedingarorlofstekjurByKennitala(args, function(err, result) {
+            response.send(result.GetFaedingarorlofstekjurByKennitalaResult);
         });
     });
 }

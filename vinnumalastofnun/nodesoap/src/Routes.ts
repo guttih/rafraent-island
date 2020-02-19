@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {GetAaetladurFaedingardagur, GetAaetladurFaedingardagurByKennitala} from "./Controller";
+import {GetAaetladurFaedingardagur, GetAaetladurFaedingardagurByKennitala, GetFaedingarorlofstekjur, GetFaedingarorlofstekjurByKennitala} from "./Controller";
 import {MakePage} from "./libs/InfoPage";
 
 class Routes {
@@ -20,6 +20,11 @@ class Routes {
             .get(GetAaetladurFaedingardagur);
         app.route('/aaetladurfaedingardagur/:kennitala')
             .get(GetAaetladurFaedingardagurByKennitala);
+
+        app.route('/faedingarorlofstekjur')
+            .get(GetFaedingarorlofstekjur);
+        app.route('/faedingarorlofstekjur/:kennitala')
+            .get(GetFaedingarorlofstekjurByKennitala);
             
     }
 }
