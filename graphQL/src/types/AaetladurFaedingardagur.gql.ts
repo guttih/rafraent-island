@@ -10,7 +10,7 @@ export default gql`
   }
 
   extend type Query {
-    getAaetladirFaedingardagar(fyrir: String = "2200-01-01", eftir: String = "1800-01-01") : [AaetladurFaedingardagur]
+    getAaetladirFaedingardagar(fyrir: String = "2200-01-01", eftir: String = "1800-01-01") : [AaetladurFaedingardagur],
     getAaetladurFaedingardagurByKt(kennitala: String): AaetladurFaedingardagur
   }
 `;

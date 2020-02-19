@@ -11,7 +11,7 @@ export const getAaetladurFaedingardagurByKennitala = async (kennitala: String): 
             }
 
             if(body && body != ""){
-                resolve(JSON.parse(body))
+                resolve(JSON.parse(body));
             }
             else{
                 resolve(null);
@@ -23,17 +23,18 @@ export const getAaetladurFaedingardagurByKennitala = async (kennitala: String): 
 
 export const getAaetladirFaedingardagar = async (eftir: String, fyrir: String): Promise<AaetladurFaedingardagur[]> => {
     const faedingardagar = new Promise<AaetladurFaedingardagur[]>((resolve, reject) => {
-        console.log(fyrir);
-        console.log(eftir);
-        const url = `http://localhost:8000/aaetladurfaedingardagur?from=${eftir}&to=${fyrir}`;
-        console.log(url);
-        request({url: url, method: "GET"}, (error: any, response: any, body: string) => {
+        request({url: `http://localhost:8000/aaetladurfaedingardagur`, qs:{from: eftir, to:fyrir}, method: "GET"}, (error: any, response: any, body: string) => {
             if (error) {
                 console.error(error);
                 reject(error);
             }
 
-            resolve(JSON.parse(body))
+            if(body && body != ""){
+                resolve(JSON.parse(body));
+            }
+            else{
+                resolve([]);
+            }
         });
     });
     return faedingardagar;
@@ -48,7 +49,7 @@ export const getFaedingarorlofstekjurByKennitala = async (kennitala: String): Pr
             }
 
             if(body && body != ""){
-                resolve(JSON.parse(body))
+                resolve(JSON.parse(body));
             }
             else{
                 resolve(null);
@@ -66,7 +67,12 @@ export const getFaedingarorlofstekjur = async (): Promise<Faedingarorlofstekjur[
                 reject(error);
             }
 
-            resolve(JSON.parse(body))
+            if(body && body != ""){
+                resolve(JSON.parse(body));
+            }
+            else{
+                resolve([]);
+            }
         });
     });
     return faedingarorlofstekjur;

@@ -10,10 +10,14 @@ const url = 'http://localhost:62991/Service.svc?wsdl';
  */
 export const GetAaetladurFaedingardagur = async (request, response) => {
     soap.createClient(url, function(err, client) {
-        var args = {from: request.params.from, to: request.params.to};
-        console.log(request.params);
+        var args = {from: request.query.from, to: request.query.to};
         client.GetAaetladurFaedingardagur(args, function(err, result) {
-            response.send(result.GetAaetladurFaedingardagurResult.AaetladurFaedingardagur);
+            if(result  && result.GetAaetladurFaedingardagurResult){
+                response.send(result.GetAaetladurFaedingardagurResult.AaetladurFaedingardagur);
+            }
+            else{
+                response.send();
+            }
         });
     });
 }
@@ -36,7 +40,12 @@ export const GetAaetladurFaedingardagurByKennitala = async (request, response) =
 export const GetFaedingarorlofstekjur = async (request, response) => {
     soap.createClient(url, function(err, client) {
         client.GetFaedingarorlofstekjur({}, function(err, result) {
-            response.send(result.GetFaedingarorlofstekjurResult.Faedingarorlofstekjur);
+            if(response && result.GetFaedingarorlofstekjurResult){
+                response.send(result.GetFaedingarorlofstekjurResult.Faedingarorlofstekjur);
+            }
+            else{
+                response.send();
+            }
         });
     });
 }
