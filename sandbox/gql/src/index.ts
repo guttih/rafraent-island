@@ -2,7 +2,6 @@ const express = require('express');
 const { ApolloServer, gql } = require('apollo-server-express');
 import { schema } from "./schemas";
 import depthLimit from "graphql-depth-limit";
-import mocks from "./mock";
 import Context from "./context"
 
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -10,7 +9,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 const server = new ApolloServer({ 
   schema: schema,
   context: async ({ req, res }: any): Promise<Context> => {
-    const user = {name: "Gunni"};
+    const user = {name: "Guðni"};
     const loader = {};
     return {user, loader}
   }, 
@@ -23,18 +22,6 @@ const server = new ApolloServer({
  });
 
 const app = express();
-
-// app.get("/books", (req: any, res: any) => {
-//   res.send(mocks.books);
-// });
-
-// app.get("/einstaklingar", (req: any, res: any) => {
-//   res.send();
-// });
-
-// app.get(`/einstaklingar/:kennitala`, (req: any, res: any) => {
-//   res.send();
-// });
 
 server.applyMiddleware({ app });
 

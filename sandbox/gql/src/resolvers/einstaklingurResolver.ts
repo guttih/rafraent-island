@@ -2,9 +2,7 @@ import {Einstaklingur} from "./../interfaces/Einstaklingur";
 import {Heimilisfang} from "./../interfaces/Heimilisfang";
 import * as einstaklingurDAO from "../DataFetch/einstaklingurDAO";
 import * as heimilisfangDAO from "../DataFetch/heimilisfangDAO";
-import {GraphQLDateTime} from "graphql-iso-date";
 import Context from "../context";
-import e = require("express");
 
 export default {
     Query: {
