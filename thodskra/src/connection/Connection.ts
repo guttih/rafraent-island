@@ -13,6 +13,6 @@ export const connection = createConnection({
         Heimilisfang,
         Einstaklingur
     ],
-    synchronize: true,
+    synchronize: false,
 logging: false
 });
