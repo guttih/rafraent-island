@@ -15,6 +15,6 @@
       "typeorm": "^0.2.22"
    },
    "scripts": {
-      "start": "nodemon src/index.ts"
+      "start": "tsc && node src/index.ts"
    }
 }
