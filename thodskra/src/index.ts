@@ -1,3 +1,4 @@
+import {connection} from './connection/Connection';
 import app from './app';
 
 

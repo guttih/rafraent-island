@@ -4,7 +4,7 @@ import {Einstaklingur} from "../entity/Einstaklingur";
 
 export const connection = createConnection({
     type: "postgres",
-    host: "localhost",
+    host: process.env.NODE_ENV === "production" ? "database" : "localhost",
     port: 5432,
     username: "postgres",
     password: "password",

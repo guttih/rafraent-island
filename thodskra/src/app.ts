@@ -1,7 +1,6 @@
-import * as express from 'express'
+import express from 'express';
 import {Routes} from "./routes/Routes";
 import bodyParser = require("body-parser");
-import { createConnection } from "typeorm";
 class App {
 
     public app: express.Application;

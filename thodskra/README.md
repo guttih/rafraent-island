@@ -1,15 +1,21 @@
-# Awesome Project Build with TypeORM
+# Þjóðskrá REST þjónusta skrifuð í  TypeORM
 
-Steps to run this project:
+## Ræsa þjónustu og gagnagrunn með docker
+Ef ræsa skal þjónustu með docker skal gera eftirfarandi
+### forskilyrði
+Docker þarf að vera uppsett á tölvunni.
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
-4. got to your browser and give the following commands
-   -  http://localhost:3000/heimilisfong to list heimilisfong
-   -  http://localhost:3000/einstaklingar to list einstaklingar
+```
+```
+
+## Ræsa þjónustuna handvirkt
+Ef þjónustunni er startað handvirkt þá þarf a gera eftirfarandi.
+### forskilyrði
+Postgres þjónn þarf að vera keyrandi áður en þjónustan er ræst.  Til að stilla gagnagrunninn sem tengjast skal, þarf að stilla gildin í skránni `src\connection\Connection.ts`.
 
 
-
-
-
+```
+npm i 
+npm start
+```
+Opnaðu svo vafra og vafraðu á slóðina `http://localhost:3000` til að fá upplýsingar um hvaða föll eru til.
