@@ -1,17 +1,19 @@
 ﻿using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 
 /// <summary>
 /// Summary description for AaetladurFaedingardagurDAO
 /// </summary>
 public class AaetladurFaedingardagurDAO
 {
-    private const String connectionString = "Server=127.0.0.1;User Id=postgres; Password=password;Database=vinnumalastofnun;";
+    private string connectionString;
     private NpgsqlConnection connection;
 
     public AaetladurFaedingardagurDAO()
     {
+        connectionString = ConfigurationManager.AppSettings["connectionString"];
         connection = new NpgsqlConnection(connectionString);
     }
 
