@@ -35,7 +35,7 @@ public class FaedingarorlofstekjurMapper
             Kennitala                 =             reader[columnIndex[(int)ColumnName.kennitala]].ToString(),
             Manadartekjur             = Int32.Parse(reader[columnIndex[(int)ColumnName.manadartekjur]].ToString()),
             AdrarManadartekjur        = Int32.Parse(reader[columnIndex[(int)ColumnName.adrar_manadartekjur]].ToString()),
-            personuafslattur          = float.Parse(reader[columnIndex[(int)ColumnName.personuafslattur]].ToString()),
+            Personuafslattur          = float.Parse(reader[columnIndex[(int)ColumnName.personuafslattur]].ToString()),
             Vidbotarlifeyrissparnadur = float.Parse(reader[columnIndex[(int)ColumnName.vidbotarlifeyrissparnadur]].ToString())
         };
         

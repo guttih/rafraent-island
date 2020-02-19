@@ -21,7 +21,7 @@ export const GetAaetladurFaedingardagurByKennitala = async (request, response) =
     soap.createClient(url, function(err, client) {
         var args = {kennitala: request.params.kennitala};
         client.GetAaetladurFaedingardagurByKennitala(args, function(err, result) {
-            response.send(result.AaetladurFaedingardagurByKennitalaResult);
+            response.send(result.GetAaetladurFaedingardagurByKennitalaResult);
         });
     });
 }

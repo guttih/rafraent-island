@@ -4,8 +4,8 @@ using System.Runtime.Serialization;
 [DataContract]
 public class AaetladurFaedingardagur
 {
-    [DataMember]
+    [DataMember(Name ="kennitala")]
     public String Kennitala { get; set; }
-    [DataMember]
+    [DataMember(Name = "dagsetning")]
     public DateTime Dagsetning { get; set; }
 }

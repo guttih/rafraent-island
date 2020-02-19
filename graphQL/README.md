@@ -1,5 +1,4 @@
-# GraphQL - gögn frá Þjóðskrá og Vinnumálastofnun
-Þjónusta sem býður upp á GraphQL gögn frá Þjóðskrá og Vinnumálastofnun
+docker build -t gudni:test .
 
-## Uppsetning
-?
+docker run -dti -p 4000:4000 -e NODE_ENV=dev --name gudni gudni:test
+

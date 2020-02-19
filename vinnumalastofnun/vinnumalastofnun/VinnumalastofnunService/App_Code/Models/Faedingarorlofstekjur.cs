@@ -4,19 +4,19 @@ using System.Runtime.Serialization;
 [DataContract]
 public class Faedingarorlofstekjur
 {
-    [DataMember]
+    [DataMember(Name ="kennitala")]
     public String Kennitala { get; set; }
 
-    [DataMember]
-    public float personuafslattur { get; set; }
+    [DataMember(Name = "personuafslattur")]
+    public float Personuafslattur { get; set; }
 
-    [DataMember]
+    [DataMember(Name = "manadartekjur")]
     public int Manadartekjur { get; set; }
 
-    [DataMember]
+    [DataMember(Name = "adrarManadartekjur")]
     public int AdrarManadartekjur { get; set; }
 
-    [DataMember]
+    [DataMember(Name = "vidbotarlifeyrissparnadur")]
     public float Vidbotarlifeyrissparnadur { get; set; }
     
 }
