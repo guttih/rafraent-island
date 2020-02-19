@@ -5,11 +5,28 @@ export default gql`
     kennitala: String!
     nafn: String!
     faedingardagur: String
+    """
+    Kennitala skráðs maka
+    """
     maki_kennitala: String
+    """
+    Nánari upplýsingar um maka
+    """
     maki: Einstaklingur
+    """
+    Börn einstaklings
+    """
     born: [Einstaklingur]
     foreldrar: [Einstaklingur]
     logheimili: [Heimilisfang]
+    """
+    Áætlaður fæðingardagur barns ef einstaklingur á von á barni
+    """
+    aaetladur_faedingardagur: AaetladurFaedingardagur
+    """
+    Upplýsingar um tekjur vegna fæðingarorlofs
+    """
+    faedingarorlofstekjur: Faedingarorlofstekjur
   }
 
   extend type Query {

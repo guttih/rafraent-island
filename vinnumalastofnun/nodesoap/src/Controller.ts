@@ -10,7 +10,9 @@ const url = 'http://localhost:62991/Service.svc?wsdl';
  */
 export const GetAaetladurFaedingardagur = async (request, response) => {
     soap.createClient(url, function(err, client) {
-        client.GetAaetladurFaedingardagur({}, function(err, result) {
+        var args = {from: request.params.from, to: request.params.to};
+        console.log(request.params);
+        client.GetAaetladurFaedingardagur(args, function(err, result) {
             response.send(result.GetAaetladurFaedingardagurResult.AaetladurFaedingardagur);
         });
     });
@@ -21,7 +23,12 @@ export const GetAaetladurFaedingardagurByKennitala = async (request, response) =
     soap.createClient(url, function(err, client) {
         var args = {kennitala: request.params.kennitala};
         client.GetAaetladurFaedingardagurByKennitala(args, function(err, result) {
-            response.send(result.GetAaetladurFaedingardagurByKennitalaResult);
+            if(result){
+                response.send(result.GetAaetladurFaedingardagurByKennitalaResult);
+            }
+            else {
+                response.send();
+            }
         });
     });
 }
@@ -39,7 +46,12 @@ export const GetFaedingarorlofstekjurByKennitala = async (request, response) => 
     soap.createClient(url, function(err, client) {
         var args = {kennitala: request.params.kennitala};
         client.GetFaedingarorlofstekjurByKennitala(args, function(err, result) {
-            response.send(result.GetFaedingarorlofstekjurByKennitalaResult);
+            if(result){
+                response.send(result.GetFaedingarorlofstekjurByKennitalaResult);
+            }
+            else{
+                response.send();
+            }
         });
     });
 }

@@ -5,7 +5,9 @@ import Context from "../context";
 export default {
     Query: {
         getAaetladirFaedingardagar: async (parent: any, args: any, context: Context, info: any): Promise<AaetladurFaedingardagur[]> => {
-            return VMSDAO.getAaetladirFaedingardagar();
+            console.log(args);
+            return (await VMSDAO.getAaetladirFaedingardagar(args.eftir, args.fyrir));
+            // .filter(a => a.dagsetning < args.fyrir && a.dagsetning > args.eftir)
         },
         getAaetladurFaedingardagurByKt: async (parent: any, args: any, context: Context, info: any): Promise<AaetladurFaedingardagur | null> => {
             return VMSDAO.getAaetladurFaedingardagurByKennitala(args.kennitala);

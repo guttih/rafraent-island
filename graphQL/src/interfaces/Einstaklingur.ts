@@ -1,4 +1,6 @@
 import { Heimilisfang } from "./Heimilisfang";
+import {AaetladurFaedingardagur} from "./AaetladurFaedingardagur";
+import {Faedingarorlofstekjur} from "./Faedingarorlofstekjur";
 
 export interface Einstaklingur {
     kennitala: string;
@@ -9,4 +11,6 @@ export interface Einstaklingur {
     born: [Einstaklingur];
     foreldrar: [Einstaklingur];
     logheimili: [Heimilisfang];
+    aaetladur_faedingardagur: AaetladurFaedingardagur;
+    faedingarorlofstekjur: Faedingarorlofstekjur;
 }
