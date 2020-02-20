@@ -7,6 +7,8 @@ import {
     einstaklingurGetByKennitalaDetailed,
     einstaklingurSave,
     einstaklingurDeleteByKennitala,
+    einstaklingurGetForeldrar,
+    einstaklingurGetBorn,
     } from "../controllers/EinstaklingurController";
 import {
     HeimilisfongGet, 
@@ -43,7 +45,6 @@ class Routes {
             .get(einstaklingurGetBornByKennitala);
        app.route('/einstaklingar/foreldrar/:kennitala')
             .get(einstaklingurGetForeldrarByKennitala);
-
         app.route('/heimilisfong')
             .get(HeimilisfongGet)
             .post(HeimilisfangSave);
@@ -52,6 +53,10 @@ class Routes {
             .delete(HeimilisfangDeleteById);
         app.route('/heimilisfong/einstaklingur/:kennitala')
             .get(HeimilisfangGetByKennitala);
+        app.route('/born')
+            .get(einstaklingurGetBorn);
+        app.route('/foreldrar')
+            .get(einstaklingurGetForeldrar)
             
     }
     

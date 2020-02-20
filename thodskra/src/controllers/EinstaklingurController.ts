@@ -84,6 +84,143 @@ export const einstaklingarGet = async (request: Request, response: Response) => 
         
 }
 
+export const einstaklingurGetBorn = async (request: Request, response: Response) => {
+    console.log('einstaklingurGetBorn');
+
+    try {   
+        await connection;
+        const repository = getManager().getRepository(Einstaklingur);
+        
+        let fromDateStr, toDateStr;
+        
+        
+        if (request.query.from !== undefined) {
+            if (isNaN(Date.parse(request.query.from))){
+                response.status(400).json({message:"from date invalid, use format yyyy-mm-dd hh:mm:ss, or just yyyy-mm-dd."})
+                return;
+            }
+
+            fromDateStr = dateToTimestapString(new Date(request.query.from));
+        }
+        if (request.query.to !== undefined) {
+            if (isNaN(Date.parse(request.query.to))){
+                response.status(400).json({message:"to date invalid, use format yyyy-mm-dd hh:mm:ss, or just yyyy-mm-dd."})
+                return;
+            }
+            toDateStr = dateToTimestapString(new Date(request.query.to));
+        }
+
+        /*if (fromDateStr === undefined && toDateStr === undefined) {
+            response.status(400).json({message:'parameters "from" and "to" are missing'});
+            return;
+        }*/
+        //let's create the query, params seem to be ok
+        let argument = 0;
+        let paramValues = [];
+        let fromSqlDateStr = "";
+        let toSqlDateStr = "";
+
+        if (fromDateStr  !== undefined) {
+            fromSqlDateStr = `e.faedingardagur >= $${++argument}`;
+            paramValues.push(fromDateStr);
+        }
+
+        if (toDateStr  !== undefined) {
+            toSqlDateStr = `e.faedingardagur <= $${++argument}`;
+            paramValues.push(toDateStr);
+        }
+
+        let where = (paramValues.length > 0)? " WHERE ":"";
+        let and =   (paramValues.length > 1)? " AND ":"";
+        let query =  `SELECT DISTINCT e.*
+                      FROM einstaklingur e
+                      INNER JOIN foreldri_barn b ON b.barn_kennitala = e.kennitala
+                      ${where} ${fromSqlDateStr} ${and} ${toSqlDateStr}`;
+
+        try {
+            const items = await getManager().query( query, paramValues);
+            response.json(items);
+            return;
+        } catch(error){
+            errorReport(response, error, 400, "There was an error running your query");
+        }; 
+    } catch(error) {
+        errorReport(response, error);
+    }
+    
+}
+
+export const einstaklingurGetForeldrar = async (request: Request, response: Response) => {
+    console.log('einstaklingurGetForeldrar');
+
+    try {   
+        
+        await connection;
+        const repository = getManager().getRepository(Einstaklingur);
+        
+        let fromDateStr, toDateStr;
+        
+        console.log('einstaklingurGetForeldrar2');
+        if (request.query.from !== undefined) {
+            if (isNaN(Date.parse(request.query.from))){
+                response.status(400).json({message:"from date invalid, use format yyyy-mm-dd hh:mm:ss, or just yyyy-mm-dd."})
+                return;
+            }
+
+            fromDateStr = dateToTimestapString(new Date(request.query.from));
+        }
+        console.log('einstaklingurGetForeldrar3');
+        if (request.query.to !== undefined) {
+            if (isNaN(Date.parse(request.query.to))){
+                response.status(400).json({message:"to date invalid, use format yyyy-mm-dd hh:mm:ss, or just yyyy-mm-dd."})
+                return;
+            }
+            toDateStr = dateToTimestapString(new Date(request.query.to));
+        }
+
+        console.log('einstaklingurGetForeldrar3');
+        /*if (fromDateStr === undefined && toDateStr === undefined) {
+            response.status(400).json({message:'parameters "from" and "to" are missing'});
+            return;
+        }*/
+
+        console.log('einstaklingurGetForeldra4');
+        //let's create the query, params seem to be ok
+        let argument = 0;
+        let paramValues = [];
+        let fromSqlDateStr = "";
+        let toSqlDateStr = "";
+
+        if (fromDateStr  !== undefined) {
+            fromSqlDateStr = `e.faedingardagur >= $${++argument}`;
+            paramValues.push(fromDateStr);
+        }
+
+        if (toDateStr  !== undefined) {
+            toSqlDateStr = `e.faedingardagur <= $${++argument}`;
+            paramValues.push(toDateStr);
+        }
+
+        let where = (paramValues.length > 0)? " WHERE ":"";
+        let and =   (paramValues.length > 1)? " AND ":"";
+        let query =  `SELECT DISTINCT e.*
+                      FROM einstaklingur e
+                      INNER JOIN foreldri_barn f ON f.foreldri_kennitala = e.kennitala 
+                      ${where} ${fromSqlDateStr} ${and} ${toSqlDateStr}`;
+            console.log('einstaklingurGetForeldra5');
+        try {
+            console.log(query);
+            const items = await getManager().query( query, paramValues);
+            response.json(items);
+            return;
+        } catch(error){
+            errorReport(response, error, 400, "There was an error running your query");
+        }; 
+    } catch(error) {
+        errorReport(response, error);
+    }
+}
+
 export const einstaklingurSave = async (request: Request, response: Response) => {
     console.log('einstaklingurSave');
     

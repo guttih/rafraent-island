@@ -6,15 +6,16 @@ const PageRoutes = [
     {   path: "/heimilisfong/:id",                      method: "get",      description: `Sækir heimilisfang út frá auðkenni heimilisfangs`         },
     {   path: "/heimilisfong/:id",                      method: "delete",   description: `Eyðir heimilisfang út frá auðkenni heimilisfangs`         },
     {   path: "/heimilisfong/einstaklingur/:kennitala", method: "get",      description: `Sækir heimilisfang einstaklings út frá kennitölu hans`    },
-    
     {   path: "/einstaklingar",                         method: "get",      description: `Sækir lista af einstaklingum.  Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss"`   },
     {   path: "/einstaklingar",                         method: "post",     description: `Vista einstakling, Bæta nýjum við eða breyta einstakling sem þegar var til`   },
-    {   path: "/einstaklingar/:kennitala",              method: "get",      description: `Sækir upplýsingar um ákveðinn einstakling`   },
     {   path: "/einstaklingar/:kennitala",              method: "delete",   description: `Eyðir einstakling`   },
     {   path: "/einstaklingar/nanar/:kennitala",        method: "get",      description: `Sækir nánari upplýsingar um ákveðinn einstakling, þar á meðal maka, börn og heimili`   },
     {   path: "/einstaklingar",                         method: "post",     description: `Vistar upplýsingar um einstakling.`   },
     {   path: "/einstaklingar/born/:kennitala",         method: "get",      description: `Sækir börn einstaklings`   },
-    {   path: "/einstaklingar/foreldrar/:kennitala",    method: "get",      description: `Sækir foreldra einstaklings.`   }
+    {   path: "/einstaklingar/foreldrar/:kennitala",    method: "get",      description: `Sækir foreldra einstaklings.`   },
+    {   path: "/foreldrar",               method: "get",      description: `Sækir alla einstaklinga sem eiga börn.  Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss`   },
+    {   path: "/born",                    method: "get",      description: `Sækir alla einstaklinga sem eiga foreldra. Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss`}
+
 ];
 
 export const MakePage = (title: String, description:String):String => {
