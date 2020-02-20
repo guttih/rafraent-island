@@ -40,7 +40,6 @@ export const HeimilisfangGetById = async(request: Request, response: Response) =
 
 export const HeimilisfangGetByKennitala = async (request: Request, response: Response) => {
 
-    console.log('einstaklingurGetBornByKennitala');
     try {
         await connection;
         const items = await getManager().query(` SELECT h.id, h.postfang FROM heimilisfang h

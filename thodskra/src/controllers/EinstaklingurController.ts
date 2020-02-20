@@ -10,9 +10,8 @@ import {errorReport, zeroFirst, dateToTimestapString} from "../libs/LibContoller
  * the timestamp format is 'yyyy-mm-dd hh:mm:ss'
  */
 export const einstaklingarGet = async (request: Request, response: Response) => {
-        console.log('einstaklingarGet');
 
-        try {   
+    try {   
             await connection;
             const repository = getManager().getRepository(Einstaklingur);
             const simpleList = Object.keys(request.query).length === 0;
@@ -85,7 +84,6 @@ export const einstaklingarGet = async (request: Request, response: Response) => 
 }
 
 export const einstaklingurGetBorn = async (request: Request, response: Response) => {
-    console.log('einstaklingurGetBorn');
 
     try {   
         await connection;
@@ -151,7 +149,6 @@ export const einstaklingurGetBorn = async (request: Request, response: Response)
 }
 
 export const einstaklingurGetForeldrar = async (request: Request, response: Response) => {
-    console.log('einstaklingurGetForeldrar');
 
     try {   
         
@@ -160,7 +157,6 @@ export const einstaklingurGetForeldrar = async (request: Request, response: Resp
         
         let fromDateStr, toDateStr;
         
-        console.log('einstaklingurGetForeldrar2');
         if (request.query.from !== undefined) {
             if (isNaN(Date.parse(request.query.from))){
                 response.status(400).json({message:"from date invalid, use format yyyy-mm-dd hh:mm:ss, or just yyyy-mm-dd."})
@@ -169,7 +165,6 @@ export const einstaklingurGetForeldrar = async (request: Request, response: Resp
 
             fromDateStr = dateToTimestapString(new Date(request.query.from));
         }
-        console.log('einstaklingurGetForeldrar3');
         if (request.query.to !== undefined) {
             if (isNaN(Date.parse(request.query.to))){
                 response.status(400).json({message:"to date invalid, use format yyyy-mm-dd hh:mm:ss, or just yyyy-mm-dd."})
@@ -178,13 +173,6 @@ export const einstaklingurGetForeldrar = async (request: Request, response: Resp
             toDateStr = dateToTimestapString(new Date(request.query.to));
         }
 
-        console.log('einstaklingurGetForeldrar3');
-        /*if (fromDateStr === undefined && toDateStr === undefined) {
-            response.status(400).json({message:'parameters "from" and "to" are missing'});
-            return;
-        }*/
-
-        console.log('einstaklingurGetForeldra4');
         //let's create the query, params seem to be ok
         let argument = 0;
         let paramValues = [];
@@ -207,9 +195,7 @@ export const einstaklingurGetForeldrar = async (request: Request, response: Resp
                       FROM einstaklingur e
                       INNER JOIN foreldri_barn f ON f.foreldri_kennitala = e.kennitala 
                       ${where} ${fromSqlDateStr} ${and} ${toSqlDateStr}`;
-            console.log('einstaklingurGetForeldra5');
         try {
-            console.log(query);
             const items = await getManager().query( query, paramValues);
             response.json(items);
             return;
@@ -222,15 +208,12 @@ export const einstaklingurGetForeldrar = async (request: Request, response: Resp
 }
 
 export const einstaklingurSave = async (request: Request, response: Response) => {
-    console.log('einstaklingurSave');
     
     try {
         await connection;
         const repository = getManager().getRepository(Einstaklingur);
 
         const newItem = repository.create(request.body);
-
-        console.log("newItem");console.log(newItem);
 
         await repository.save(newItem)
         .then((data)=>{
@@ -248,7 +231,6 @@ export const einstaklingurSave = async (request: Request, response: Response) =>
 }
 
 export const einstaklingurGetByKennitalaDetailed = async(request: Request, response: Response) => {
-    console.log('einstaklingurGetByKennitalaDetailed');
     
     try{
         await connection;
@@ -267,7 +249,6 @@ export const einstaklingurGetByKennitalaDetailed = async(request: Request, respo
                 }
             }
         }
-        console.log(item);
         // return loaded item
         response.send(item);
     } catch(error) {
@@ -275,7 +256,6 @@ export const einstaklingurGetByKennitalaDetailed = async(request: Request, respo
     }
 }
 export const einstaklingurGetByKennitala = async(request: Request, response: Response) => {
-    console.log('einstaklingurGetByKennitala');
     
     try{
         await connection;
@@ -289,7 +269,6 @@ export const einstaklingurGetByKennitala = async(request: Request, response: Res
 }
 
 export const einstaklingurDeleteByKennitala = async(request: Request, response: Response) => {
-    console.log('einstaklingurDeleteByKennitala');
     
     try{
         await connection;
@@ -315,7 +294,6 @@ export const einstaklingurDeleteByKennitala = async(request: Request, response: 
 }
 
 export const einstaklingurGetForeldrarByKennitala = async(request: Request, response: Response) => {
-    console.log('einstaklingurGetForeldrarByKennitala');
     
     try {
         await connection;
@@ -334,7 +312,6 @@ export const einstaklingurGetForeldrarByKennitala = async(request: Request, resp
 
 export const einstaklingurGetBornByKennitala = async (request: Request, response: Response) => {
     
-    console.log('einstaklingurGetBornByKennitala');
     try {
         await connection;
         const items = await getManager().query( ' SELECT e.kennitala, e.nafn, e.faedingardagur, e.maki_kennitala'

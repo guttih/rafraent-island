@@ -30,7 +30,6 @@ class Routes {
                 
                 response.status(200)
                     .send(MakePage('Þjóðskrá', 'Þjónusta sem gefur aðgang að upplýsingum einstaklinga, tengsl þeirra og heimilisfang'));
-                    console.log('Root OK')
             });
 
         app.route('/einstaklingar')

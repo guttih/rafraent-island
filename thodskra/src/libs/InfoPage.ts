@@ -13,8 +13,8 @@ const PageRoutes = [
     {   path: "/einstaklingar",                         method: "post",     description: `Vistar upplýsingar um einstakling.`   },
     {   path: "/einstaklingar/born/:kennitala",         method: "get",      description: `Sækir börn einstaklings`   },
     {   path: "/einstaklingar/foreldrar/:kennitala",    method: "get",      description: `Sækir foreldra einstaklings.`   },
-    {   path: "/foreldrar",               method: "get",      description: `Sækir alla einstaklinga sem eiga börn.  Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss`   },
-    {   path: "/born",                    method: "get",      description: `Sækir alla einstaklinga sem eiga foreldra. Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss`}
+    {   path: "/foreldrar",                             method: "get",      description: `Sækir alla einstaklinga sem eiga börn.  Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss`   },
+    {   path: "/born",                                  method: "get",      description: `Sækir alla einstaklinga sem eiga foreldra. Hægt er að gefa tvo parametra með þessari aðgerð, "from" sækir alla sem fæðast eftir ákveðinn tíma og "to" sem sækir alla til ákveðins tíma.  Tími er gefinn á þessu formi "yyyy-MM-dd hh:mm:ss`}
 
 ];
 
