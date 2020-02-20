@@ -20,9 +20,9 @@ export const getEinstaklingurByKennitalaFromService = async (kennitala: String):
     return einstaklingur;
 }
 
-export const getEinstaklingarFromService = async (): Promise<Einstaklingur[]> => {
+export const getEinstaklingarFromService = async (eftir: String, fyrir: String): Promise<Einstaklingur[]> => {
     const einstaklingar = new Promise<Einstaklingur[]>((resolve, reject) => {
-        request({url: "http://localhost:3000/einstaklingar", method: "GET"}, (error: any, response: any, body: string) => {
+        request({url: "http://localhost:3000/einstaklingar", qs:{from: eftir, to:fyrir}, method: "GET"}, (error: any, response: any, body: string) => {
             if (error) {
                 console.error(error);
                 reject(error);

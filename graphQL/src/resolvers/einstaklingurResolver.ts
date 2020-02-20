@@ -13,8 +13,7 @@ export default {
             return einstaklingurDAO.getEinstaklingurByKennitalaFromService(args.kennitala);
         },
         getEinstaklingar: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
-            return (await einstaklingurDAO.getEinstaklingarFromService())
-                .filter(a => a.faedingardagur > args.faeddurEftir || args.faeddurEftir == "1800-01-01");
+            return einstaklingurDAO.getEinstaklingarFromService(args.faeddurEftir, args.faeddurFyrir);
         },
         getBornForeldris: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
             return einstaklingurDAO.getBornByKennitalaFromService(args.kennitala);
