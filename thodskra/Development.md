@@ -28,8 +28,6 @@ docker cp ./faedingarorlofstekjur.sql postgres:/docker-entrypoint-initdb.d/faedi
 docker cp ./aaetladur_faedingardagur.sql postgres:/docker-entrypoint-initdb.d/heimilisaaetladur_faedingardagurfang.sql && docker exec -u postgres postgres psql postgres postgres -f docker-entrypoint-initdb.d/aaetladur_faedingardagur.sql
 ```
 
-aaetladur_faedingardagur
-
 
 
 ## Glósur er varða typeOrm
