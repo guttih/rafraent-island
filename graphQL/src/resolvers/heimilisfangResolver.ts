@@ -1,5 +1,5 @@
 import {Heimilisfang} from "./../interfaces/Heimilisfang";
-import * as heimilisfangDAO from "../DataFetch/heimilisfangDAO";
+import * as heimilisfangDAO from "../DataAccess/heimilisfangDAO";
 import Context from "../context";
 
 export default {

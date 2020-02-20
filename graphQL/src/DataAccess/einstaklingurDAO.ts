@@ -1,5 +1,5 @@
 import request from "request";
-import {Einstaklingur} from "./../interfaces/Einstaklingur";
+import {Einstaklingur} from "../interfaces/Einstaklingur";
 
 export const getEinstaklingurByKennitalaFromService = async (kennitala: String): Promise<Einstaklingur | null> => {
     const einstaklingur = new Promise<Einstaklingur | null>((resolve, reject) => {
@@ -51,6 +51,20 @@ export const getBornByKennitalaFromService = async (kennitala: String): Promise<
   export const getForeldrarByKennitalaFromService = async (kennitala: String): Promise<Einstaklingur[]> => {
     const foreldrar = new Promise<Einstaklingur[]>((resolve, reject) => {
         request({url: `http://localhost:3000/einstaklingar/foreldrar/${kennitala}`, method: "GET"}, (error: any, response: any, body: string) => {
+            if (error) {
+            console.error(error);
+            reject(error);
+            }
+    
+            resolve(JSON.parse(body))
+        });
+    });
+    return foreldrar;
+  }
+
+  export const getForeldrarFromService = async (): Promise<Einstaklingur[]> => {
+    const foreldrar = new Promise<Einstaklingur[]>((resolve, reject) => {
+        request({url: `http://localhost:3000/foreldrar`, method: "GET"}, (error: any, response: any, body: string) => {
             if (error) {
             console.error(error);
             reject(error);

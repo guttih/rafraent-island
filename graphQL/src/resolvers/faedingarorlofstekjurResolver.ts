@@ -1,5 +1,5 @@
 import {Faedingarorlofstekjur} from "./../interfaces/Faedingarorlofstekjur";
-import * as VMSDAO from "../DataFetch/VMSDAO";
+import * as VMSDAO from "../DataAccess/VMSDAO";
 import Context from "../context";
 
 export default {

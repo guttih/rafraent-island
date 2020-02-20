@@ -1,5 +1,5 @@
 import {AaetladurFaedingardagur} from "./../interfaces/AaetladurFaedingardagur";
-import * as VMSDAO from "../DataFetch/VMSDAO";
+import * as VMSDAO from "../DataAccess/VMSDAO";
 import Context from "../context";
 import { VMSdata } from "../interfaces/VMSdata";
 

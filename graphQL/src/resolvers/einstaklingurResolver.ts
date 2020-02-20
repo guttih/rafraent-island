@@ -2,9 +2,9 @@ import {Einstaklingur} from "./../interfaces/Einstaklingur";
 import {Heimilisfang} from "./../interfaces/Heimilisfang";
 import {AaetladurFaedingardagur} from "./../interfaces/AaetladurFaedingardagur";
 import {Faedingarorlofstekjur} from "./../interfaces/Faedingarorlofstekjur";
-import * as einstaklingurDAO from "../DataFetch/einstaklingurDAO";
-import * as heimilisfangDAO from "../DataFetch/heimilisfangDAO";
-import * as VMSDAO from "../DataFetch/VMSDAO";
+import * as einstaklingurDAO from "../DataAccess/einstaklingurDAO";
+import * as heimilisfangDAO from "../DataAccess/heimilisfangDAO";
+import * as VMSDAO from "../DataAccess/VMSDAO";
 import Context from "../context";
 
 export default {
@@ -16,11 +16,22 @@ export default {
             return (await einstaklingurDAO.getEinstaklingarFromService())
                 .filter(a => a.faedingardagur > args.faeddurEftir || args.faeddurEftir == "1800-01-01");
         },
-        getBorn: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
+        getBornForeldris: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
             return einstaklingurDAO.getBornByKennitalaFromService(args.kennitala);
         },
-        getForeldrar: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
+        getForeldrarBarns: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
             return einstaklingurDAO.getForeldrarByKennitalaFromService(args.kennitala);
+        },
+        getForeldrar: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
+            const foreldrar = await einstaklingurDAO.getForeldrarFromService();
+
+            if(args.aaetlDagurFra || args.aaetlDagurTil){
+                const dagar = await VMSDAO.getAaetladirFaedingardagar(args.aaetlDagurFra, args.aaetlDagurTil);
+                return foreldrar.filter(foreldri => dagar.filter(dagur => dagur.kennitala == foreldri.kennitala).length > 0);
+            }
+            else{
+                return foreldrar;
+            }
         }
     },
     Einstaklingur: {

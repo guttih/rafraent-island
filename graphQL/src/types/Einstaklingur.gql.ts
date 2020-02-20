@@ -31,8 +31,9 @@ export default gql`
 
   extend type Query {
     getEinstaklingar(faeddurEftir: String = "1800-01-01"): [Einstaklingur],
-    getEinstaklingur(kennitala: String): Einstaklingur,
-    getBorn(kennitala: String): [Einstaklingur],
-    getForeldrar(kennitala: String): [Einstaklingur]
+    getEinstaklingur(kennitala: String!): Einstaklingur,
+    getBornForeldris(kennitala: String!): [Einstaklingur],
+    getForeldrarBarns(kennitala: String!): [Einstaklingur],
+    getForeldrar(aaetlDagurFra: String, aaetlDagurTil: String): [Einstaklingur]
   }
 `;
