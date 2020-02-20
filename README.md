@@ -1,5 +1,25 @@
 # Rafrænt Ísland
-[Repo](https://github.com/guttih/rafraent-island)
+ [Repo](https://github.com/guttih/rafraent-island)
+
+## Notkunartilvik - Vefþjónustuteymi 
+| Forritari                   | Tölvupóstfang                           |
+| --------------------------- |:--------------------------------------- |
+| Guðjón Hólm Sigurðsson      | gudjons@advania.is                      |
+| Guðni Aðalsteinn Þrastarson | gudni.adalsteinn.thrastarson@advania.is |
+
+## Þjónustur
+Þjónustur sem gerðar voru í þessu verkefni eru fjórar.  Við gerðum ráð fyrir að ef ný þjónusta verður búin til af ríkinu, þá sé hún gerð sem REST en ekki SOAP, þar sem SOAP er nú á útleið.
+
+Þess vegna tókum við þá ákvörðun að búa til proxy þjónustu (nodesoap) sem graphQL talar við með json objectum en þjónusta þessi sér um samskiptin við SOAP þjónustu sem við bjuggum til í .NET.
+
+
+| Þjónusta              | Staðsetning                       | Port  |
+| --------------------- |:--------------------------------- |:----- |
+| graphQL               | graphQL                           | 4000  |
+| thodskra              | thodskra                          | 3000  |
+| nodesoap              | vinnumalastofnun\nodesoap         | 8000  |
+| vinnumalastofnun      | vinnumalastofnun\vinnumalastofnun | 62991 |
+
 
 ## Koma þessum fjórum þjónustum í gang
 Framkvæmdu eftirfarandi aðgerðir í eftirfarandi röð

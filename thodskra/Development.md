@@ -7,14 +7,11 @@ Hér er haldið utanum skipanir docker gám þessarar þjónustu.
  - Ef docker er nú í gangi þarf að stoppa hann
    -  `docker rm thjodskra-api`
  - Hér tengjum við við thjodskra-api container við db container
-   - `docker run -p 3000:3000 --name thjodskra-api --link=pg:database  thjodskra-api:latest`
+   - `docker run -p 3000:3000 --name thjodskra-api --link=postgres:database  thjodskra-api:latest`
 
 ### To build docker image
  - Byggja nýjann container
    - `docker build . -t thjodskra-api:latest`
-
-### Búa til tengibrú á pg
-pg gæti verið gagnagrunns gámur `docker network connect testbridge pg`
 
 ### Inserta búa til töflur og hlaða inn gögnum gögn
 Staðsetja sig á viðkomandi tölvu þar sem  sql scripturnar eru með `cd` skipunninni. og gera svo eftirfarandi fyrir scripturnar.
