@@ -4,4 +4,4 @@ Mappan inniheldur sql skrár sem þarf að keyra til að bæta gögnum í postgr
 
 ## búa til database fyrir vinnumálastofnun í postgres container
 
-`createdb vinnumálastofnun
+`createdb vinnumálastofnun`

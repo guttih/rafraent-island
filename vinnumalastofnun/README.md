@@ -1,5 +1,9 @@
 # Vinnumálastofnun
-Soap þjónusta fyrir vinnumálastofnun
+SOAP þjónusta fyrir vinnumálastofnun ásamt REST þjónustu sem hjúpar SOAP þjónustunaþ
 
-## Uppsetning
-?
+## Þjónustu í undirmöppum
+
+| Þjónusta              | Staðsetning      | Port  |
+| --------------------- |:---------------- |:----- |
+| nodesoap              | nodesoap         | 8000  |
+| vinnumalastofnun      | vinnumalastofnun | 62991 |

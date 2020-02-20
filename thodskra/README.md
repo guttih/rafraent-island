@@ -1,15 +1,17 @@
-# Þjóðskrá REST þjónusta skrifuð í  TypeORM
+# thodskra
+ Er REST þjónusta sem notar TypeORM til að tala við grunninn  
 
 ## Ræsa þjónustu og gagnagrunn með docker
 Ef ræsa skal þjónustu með docker skal gera eftirfarandi
+
 ### Forskilyrði
 Docker þarf að vera uppsett á tölvunni til að hægt sé að keyra postgres container.  Sjá `README.md` á rót reposins til að sjá hvernig skal starta postgres í container.
+
 ### Ræsing
 ```
 docker rm thjodskra-api
 docker run -p 3000:3000 --name thjodskra-api --link=postgres:database  thjodskra-api:latest
 ```
-
 
 ## Ræsa þjónustuna handvirkt
 ### Forskilyrði
