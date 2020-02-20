@@ -2,17 +2,6 @@
 
 ## command 1
 ```
-  getEinstaklingur(kennitala: "162605784649") {
-    nafn
-    kennitala
-    maki {
-      kennitala
-      nafn
-    }
-  }
-```
-## command 2
-```
 {
   getEinstaklingar(faeddurEftir: "2019-07-01") {
     nafn
@@ -33,7 +22,7 @@
 }
 
 ```
-## command 3
+## command 2
 ```
 {
   getVMSInfo(fyrir: "2020-06-01") {
@@ -44,15 +33,21 @@
   }
 }
 ```
-## command 4
+## command 3
 ```
 {
   getForeldrar(aaetlDagurFra: "2020-05-01", aaetlDagurTil: "2020-06-01") {
-    kennitala
     nafn
+    born {
+      nafn
+    }
+    faedingarorlofstekjur {
+      manadartekjur
+    }
     aaetladur_faedingardagur {
       dagsetning
     }
   }
 }
+
 ```
