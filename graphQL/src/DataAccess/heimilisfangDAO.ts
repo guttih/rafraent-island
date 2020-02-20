@@ -1,5 +1,5 @@
 import request from "request";
-import {Heimilisfang} from "./../interfaces/Heimilisfang";
+import {Heimilisfang} from "../interfaces/Heimilisfang";
 
 export const getHeimilisfongFromService = async (): Promise<Heimilisfang[]> => {
     const heimilisfong = new Promise<Heimilisfang[]>((resolve, reject) => {

@@ -1,6 +1,6 @@
 import request from "request";
-import {AaetladurFaedingardagur} from "./../interfaces/AaetladurFaedingardagur";
-import {Faedingarorlofstekjur} from "./../interfaces/Faedingarorlofstekjur";
+import {AaetladurFaedingardagur} from "../interfaces/AaetladurFaedingardagur";
+import {Faedingarorlofstekjur} from "../interfaces/Faedingarorlofstekjur";
 
 export const getAaetladurFaedingardagurByKennitala = async (kennitala: String): Promise<AaetladurFaedingardagur | null> => {
     const faedingardagur = new Promise<AaetladurFaedingardagur | null>((resolve, reject) => {

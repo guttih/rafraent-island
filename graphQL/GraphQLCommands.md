@@ -33,3 +33,26 @@
 }
 
 ```
+## command 3
+```
+{
+  getVMSInfo(fyrir: "2020-06-01") {
+    kennitala
+    aaetl_faedingardagur
+    manadartekjur
+    personuafslattur
+  }
+}
+```
+## command 4
+```
+{
+  getForeldrar(aaetlDagurFra: "2020-05-01", aaetlDagurTil: "2020-06-01") {
+    kennitala
+    nafn
+    aaetladur_faedingardagur {
+      dagsetning
+    }
+  }
+}
+```

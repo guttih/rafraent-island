@@ -3,7 +3,7 @@ import { gql } from "apollo-server-express";
 export default gql`
   type VMSdata {
     kennitala: String
-    dagsetning: String
+    aaetl_faedingardagur: String
     manadartekjur: Int
     adrarManadartekjur: Int
     personuafslattur: Float

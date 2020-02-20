@@ -1,5 +1,5 @@
 import request from "request";
-import {Einstaklingur} from "./../interfaces/Einstaklingur";
+import {Einstaklingur} from "../interfaces/Einstaklingur";
 
 export const getEinstaklingurByKennitalaFromService = async (kennitala: String): Promise<Einstaklingur | null> => {
     const einstaklingur = new Promise<Einstaklingur | null>((resolve, reject) => {
@@ -20,9 +20,9 @@ export const getEinstaklingurByKennitalaFromService = async (kennitala: String):
     return einstaklingur;
 }
 
-export const getEinstaklingarFromService = async (): Promise<Einstaklingur[]> => {
+export const getEinstaklingarFromService = async (eftir: String, fyrir: String): Promise<Einstaklingur[]> => {
     const einstaklingar = new Promise<Einstaklingur[]>((resolve, reject) => {
-        request({url: "http://localhost:3000/einstaklingar", method: "GET"}, (error: any, response: any, body: string) => {
+        request({url: "http://localhost:3000/einstaklingar", qs:{from: eftir, to:fyrir}, method: "GET"}, (error: any, response: any, body: string) => {
             if (error) {
                 console.error(error);
                 reject(error);
@@ -51,6 +51,20 @@ export const getBornByKennitalaFromService = async (kennitala: String): Promise<
   export const getForeldrarByKennitalaFromService = async (kennitala: String): Promise<Einstaklingur[]> => {
     const foreldrar = new Promise<Einstaklingur[]>((resolve, reject) => {
         request({url: `http://localhost:3000/einstaklingar/foreldrar/${kennitala}`, method: "GET"}, (error: any, response: any, body: string) => {
+            if (error) {
+            console.error(error);
+            reject(error);
+            }
+    
+            resolve(JSON.parse(body))
+        });
+    });
+    return foreldrar;
+  }
+
+  export const getForeldrarFromService = async (): Promise<Einstaklingur[]> => {
+    const foreldrar = new Promise<Einstaklingur[]>((resolve, reject) => {
+        request({url: `http://localhost:3000/foreldrar`, method: "GET"}, (error: any, response: any, body: string) => {
             if (error) {
             console.error(error);
             reject(error);

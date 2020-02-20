@@ -9,7 +9,7 @@ const isDevelopment = process.env.NODE_ENV !== "production";
 const server = new ApolloServer({ 
   schema: schema,
   context: async ({ req, res }: any): Promise<Context> => {
-    const user = {name: "Guðni"};
+    const user = {name: "Test"};
     const loader = {};
     return {user, loader}
   }, 

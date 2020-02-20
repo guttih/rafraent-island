@@ -1,4 +1,4 @@
-import * as VMSDAO from "../DataFetch/VMSDAO";
+import * as VMSDAO from "../DataAccess/VMSDAO";
 import Context from "../context";
 import { VMSdata } from "../interfaces/VMSdata";
 
@@ -14,7 +14,7 @@ export default {
 
                 const vms:VMSdata = {
                     kennitala: dagur.kennitala,
-                    dagsetning: dagur.dagsetning,
+                    aaetl_faedingardagur: dagur.dagsetning,
                     manadartekjur: tekjur?.manadartekjur,
                     adrarManadartekjur: tekjur?.adrarManadartekjur,
                     personuafslattur: tekjur?.personuafslattur,
