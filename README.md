@@ -67,3 +67,11 @@ Opna nýjan command prompt glugga
   npm i && npm start
  ```
 
+ 
+#### Keyra upp rest graphQL þjónustuna
+Opna nýjan command prompt glugga
+```
+  cd graphQL
+  npm i && npm start
+ ```
+
