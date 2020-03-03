@@ -34,6 +34,6 @@ export default gql`
     getEinstaklingur(kennitala: String!): Einstaklingur,
     getBornForeldris(kennitala: String!): [Einstaklingur],
     getForeldrarBarns(kennitala: String!): [Einstaklingur],
-    getForeldrar(aaetlDagurFra: String, aaetlDagurTil: String, topIncome: Int): [Einstaklingur]
+    getForeldrar(aaetlDagurFra: String, aaetlDagurTil: String, tekjuhaestu: Int): [Einstaklingur]
   }
 `;

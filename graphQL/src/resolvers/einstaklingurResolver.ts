@@ -29,19 +29,12 @@ export default {
                 const dagar = await VMSDAO.getAaetladirFaedingardagar(args.aaetlDagurFra, args.aaetlDagurTil);
                 foreldrar = foreldrar.filter(foreldri => dagar.filter(dagur => dagur.kennitala == foreldri.kennitala).length > 0);
             }
-            if(args.topIncome){
-                const tekjur = await VMSDAO.getFaedingarorlofstekjur();
-                const topIncome = tekjur.map(function(m){return m.manadartekjur}).sort((a,b) => b-a).slice(0,args.topIncome);
-                console.log("test");
-                console.log(topIncome);
-                const topXtekjur = tekjur.filter( t => topIncome.includes(t.manadartekjur));
-                const topKennitolur = topXtekjur.map(function(m){return m.kennitala});
-                console.log(topKennitolur);
-                console.log(foreldrar);
-                foreldrar = foreldrar.filter(f => topKennitolur.includes(f.kennitala));
-                    //  && t.manadartekjur == Math.max.apply(Math, tekjur.map(function(m){return m.manadartekjur}))).length > 0);
-                    console.log("foreldrar");
-                    console.log(foreldrar);
+            if(args.tekjuhaestu){
+                let tekjur = await VMSDAO.getFaedingarorlofstekjur();
+                tekjur = tekjur.filter(t => foreldrar.map(function(m){return m.kennitala}).includes(t.kennitala));
+                const haestutekjur = tekjur.map(function(m){return m.manadartekjur}).sort((a,b) => b-a).slice(0,args.tekjuhaestu);
+                const kennitolur = tekjur.filter( t => haestutekjur.includes(t.manadartekjur)).map(function(m){return m.kennitala});
+                foreldrar = foreldrar.filter(f => kennitolur.includes(f.kennitala));
             }
             
             return foreldrar;
