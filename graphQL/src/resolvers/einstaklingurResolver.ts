@@ -6,6 +6,7 @@ import * as einstaklingurDAO from "../DataAccess/einstaklingurDAO";
 import * as heimilisfangDAO from "../DataAccess/heimilisfangDAO";
 import * as VMSDAO from "../DataAccess/VMSDAO";
 import Context from "../context";
+import { makeExecutableSchema } from "apollo-server-express";
 
 export default {
     Query: {
@@ -22,15 +23,28 @@ export default {
             return einstaklingurDAO.getForeldrarByKennitalaFromService(args.kennitala);
         },
         getForeldrar: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
-            const foreldrar = await einstaklingurDAO.getForeldrarFromService();
+            let foreldrar = await einstaklingurDAO.getForeldrarFromService();
 
             if(args.aaetlDagurFra || args.aaetlDagurTil){
                 const dagar = await VMSDAO.getAaetladirFaedingardagar(args.aaetlDagurFra, args.aaetlDagurTil);
-                return foreldrar.filter(foreldri => dagar.filter(dagur => dagur.kennitala == foreldri.kennitala).length > 0);
+                foreldrar = foreldrar.filter(foreldri => dagar.filter(dagur => dagur.kennitala == foreldri.kennitala).length > 0);
             }
-            else{
-                return foreldrar;
+            if(args.topIncome){
+                const tekjur = await VMSDAO.getFaedingarorlofstekjur();
+                const topIncome = tekjur.map(function(m){return m.manadartekjur}).sort((a,b) => b-a).slice(0,args.topIncome);
+                console.log("test");
+                console.log(topIncome);
+                const topXtekjur = tekjur.filter( t => topIncome.includes(t.manadartekjur));
+                const topKennitolur = topXtekjur.map(function(m){return m.kennitala});
+                console.log(topKennitolur);
+                console.log(foreldrar);
+                foreldrar = foreldrar.filter(f => topKennitolur.includes(f.kennitala));
+                    //  && t.manadartekjur == Math.max.apply(Math, tekjur.map(function(m){return m.manadartekjur}))).length > 0);
+                    console.log("foreldrar");
+                    console.log(foreldrar);
             }
+            
+            return foreldrar;
         }
     },
     Einstaklingur: {
