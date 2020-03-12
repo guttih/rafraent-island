@@ -6,6 +6,7 @@ import * as einstaklingurDAO from "../DataAccess/einstaklingurDAO";
 import * as heimilisfangDAO from "../DataAccess/heimilisfangDAO";
 import * as VMSDAO from "../DataAccess/VMSDAO";
 import Context from "../context";
+import { makeExecutableSchema } from "apollo-server-express";
 
 export default {
     Query: {
@@ -22,15 +23,21 @@ export default {
             return einstaklingurDAO.getForeldrarByKennitalaFromService(args.kennitala);
         },
         getForeldrar: async (parent: any, args: any, context: Context, info: any): Promise<Einstaklingur[]> => {
-            const foreldrar = await einstaklingurDAO.getForeldrarFromService();
+            let foreldrar = await einstaklingurDAO.getForeldrarFromService();
 
             if(args.aaetlDagurFra || args.aaetlDagurTil){
                 const dagar = await VMSDAO.getAaetladirFaedingardagar(args.aaetlDagurFra, args.aaetlDagurTil);
-                return foreldrar.filter(foreldri => dagar.filter(dagur => dagur.kennitala == foreldri.kennitala).length > 0);
+                foreldrar = foreldrar.filter(foreldri => dagar.filter(dagur => dagur.kennitala == foreldri.kennitala).length > 0);
             }
-            else{
-                return foreldrar;
+            if(args.tekjuhaestu){
+                let tekjur = await VMSDAO.getFaedingarorlofstekjur();
+                tekjur = tekjur.filter(t => foreldrar.map(function(m){return m.kennitala}).includes(t.kennitala));
+                const haestutekjur = tekjur.map(function(m){return m.manadartekjur}).sort((a,b) => b-a).slice(0,args.tekjuhaestu);
+                const kennitolur = tekjur.filter( t => haestutekjur.includes(t.manadartekjur)).map(function(m){return m.kennitala});
+                foreldrar = foreldrar.filter(f => kennitolur.includes(f.kennitala));
             }
+            
+            return foreldrar;
         }
     },
     Einstaklingur: {
